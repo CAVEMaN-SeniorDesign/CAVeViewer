@@ -1,0 +1,7 @@
+services:
+  caveviewer:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    ports:
+      - "80:80"
