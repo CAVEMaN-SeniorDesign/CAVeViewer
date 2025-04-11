@@ -41,6 +41,20 @@ class App {
 		if (options.model) {
 			this.view(options.model, '', new Map());
 		}
+
+		// Test loading .glb file
+		const filepath = "/3d-assets/TheCave.glb";
+		fetch(new URL(filepath, import.meta.url))
+			.then(response => {
+				response.arrayBuffer().then(buffer => {
+					let filemap = new Map();
+					filemap.set(filepath, new File([buffer], filepath));
+					this.load(filemap);
+				})
+			})
+			.catch(error => {
+				console.error('Error loading file:', error);
+			});
 	}
 
 	/**
