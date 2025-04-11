@@ -1,6 +1,5 @@
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Viewer } from './viewer.js';
-import { SimpleDropzone } from 'simple-dropzone';
 import { Validator } from './validator.js';
 import { Footer } from './components/footer';
 import queryString from 'query-string';
@@ -27,16 +26,10 @@ class App {
 			cameraPosition: hash.cameraPosition ? hash.cameraPosition.split(',').map(Number) : null,
 		};
 
-		this.el = el;
 		this.viewer = null;
 		this.viewerEl = null;
-		this.spinnerEl = el.querySelector('.spinner');
 		this.dropEl = el.querySelector('.dropzone');
-		this.inputEl = el.querySelector('#file-input');
 		this.validator = new Validator(el);
-
-		this.createDropzone();
-		this.hideSpinner();
 
 		const options = this.options;
 
@@ -48,16 +41,6 @@ class App {
 		if (options.model) {
 			this.view(options.model, '', new Map());
 		}
-	}
-
-	/**
-	 * Sets up the drag-and-drop controller.
-	 */
-	createDropzone() {
-		const dropCtrl = new SimpleDropzone(this.dropEl, this.inputEl);
-		dropCtrl.on('drop', ({ files }) => this.load(files));
-		dropCtrl.on('dropstart', () => this.showSpinner());
-		dropCtrl.on('droperror', () => this.hideSpinner());
 	}
 
 	/**
@@ -108,7 +91,6 @@ class App {
 		const fileURL = typeof rootFile === 'string' ? rootFile : URL.createObjectURL(rootFile);
 
 		const cleanup = () => {
-			this.hideSpinner();
 			if (typeof rootFile === 'object') URL.revokeObjectURL(fileURL);
 		};
 
@@ -139,14 +121,6 @@ class App {
 		}
 		window.alert(message);
 		console.error(error);
-	}
-
-	showSpinner() {
-		this.spinnerEl.style.display = '';
-	}
-
-	hideSpinner() {
-		this.spinnerEl.style.display = 'none';
 	}
 }
 
