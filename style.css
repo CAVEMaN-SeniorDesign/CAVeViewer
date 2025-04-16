@@ -139,13 +139,20 @@ header h1 > a {
 .playControlBar {
   z-index: 10;
   position: absolute;
-  display: block;
+  display: inline-block;
   margin-left: 37.5%;
   align-self: center;
   bottom: 20px;
   height: 50px;
   width: 25%;
+}
 
+.playControlBar #playBtn {
+  width: 20%;
+}
+
+.playControlBar #playSlider {
+  width: 70%;
 }
 
 /******************************************************************************
