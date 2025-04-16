@@ -34,6 +34,11 @@ import { GUI } from 'dat.gui';
 
 import { environments } from './environments.js';
 
+let iter = 0;
+let prev_iter = -1;
+let play = false;
+
+
 const DEFAULT_CAMERA = '[default]';
 
 const MANAGER = new LoadingManager();
@@ -138,6 +143,20 @@ export class Viewer {
 		this.animate = this.animate.bind(this);
 		requestAnimationFrame(this.animate);
 		window.addEventListener('resize', this.resize.bind(this), false);
+
+
+		let playBtn = document.getElementById("playBtn");
+
+		playBtn.addEventListener('click', (e) => {
+			console.log("Clicked Play Button");
+			play = !play;
+
+			if(play){
+				playBtn.value = "\u23F8";
+			}else{
+				playBtn.value = "\u23F5";
+			}
+		})
 	}
 
 	animate(time) {
@@ -160,6 +179,59 @@ export class Viewer {
 			this.axesCamera.lookAt(this.axesScene.position);
 			this.axesRenderer.render(this.axesScene, this.axesCamera);
 		}
+
+		const steps = 1000;
+		const startPos = new Vector3(.5, .41666, 1.93);
+		const endPos = new Vector3(-.404, -.3164, -1.54);
+		// const endPos = new Vector3(.192978, .1612, .70865);
+
+		const lookAtVec = new Vector3(-.5137, -.392, -1.96);
+
+		
+
+		if(this.controls.object.position.x != 0 && this.controls.object.position.y != 0 && this.controls.object.position.z != 0)
+		{
+			if(play){
+				document.getElementById("playSlider").value = parseInt(document.getElementById("playSlider").value) + 1;
+				this.controls.enableZoom = false;
+				this.controls.enablePan = false;
+				this.controls.enableRotate = false;
+				this.controls.enabled = false;
+			}
+			
+			
+			iter = document.getElementById("playSlider").value;
+			// console.log(iter);
+			// console.log(traverseVec);
+			
+			
+			
+			if(iter != prev_iter){
+				const traverseVec = endPos.sub(startPos);
+				let stepVecx = startPos.x + ((iter/steps) * traverseVec.x);
+				let stepVecy = startPos.y + ((iter/steps) * traverseVec.y);
+				let stepVecz = startPos.z + ((iter/steps) * traverseVec.z);
+
+				this.controls.object.position.set(stepVecx, stepVecy, stepVecz);
+				this.controls.target.set(lookAtVec.x, lookAtVec.y, lookAtVec.z);
+				prev_iter = iter;
+			}
+		}
+
+		if(!play){
+			this.controls.enableZoom = true;
+			this.controls.enablePan = true;
+			this.controls.enableRotate = true;
+			this.controls.enabled = true;
+		}
+		
+		if(iter >= steps){
+			play = false;
+		}
+
+		// console.log("Cam positions:", this.controls.object.position);
+		// console.log("Cam LookAt:", this.controls.target);
+		// console.log(iter)
 	}
 
 	resize() {
