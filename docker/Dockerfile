@@ -6,4 +6,6 @@ RUN npm run build
 
 FROM nginx:alpine
 COPY --from=builder /CAVeViewer/dist /usr/share/nginx/html/maps
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+COPY ./docker/launch.sh .
+RUN chmod +x launch.sh
+ENTRYPOINT ["./launch.sh"]

@@ -3,5 +3,7 @@ services:
     build:
       context: ../
       dockerfile: docker/Dockerfile
+    volumes:
+      - ./docker/certificate:/etc/letsencrypt/live/caverobotics.com
     ports:
       - "80:80"
