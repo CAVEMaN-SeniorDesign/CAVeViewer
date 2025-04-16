@@ -144,19 +144,28 @@ export class Viewer {
 		requestAnimationFrame(this.animate);
 		window.addEventListener('resize', this.resize.bind(this), false);
 
-
+		let playControlBar = document.getElementById("playControlBar");
 		let playBtn = document.getElementById("playBtn");
 
 		playBtn.addEventListener('click', (e) => {
 			console.log("Clicked Play Button");
 			play = !play;
 
+			let btnImg = playBtn.querySelector('.playpausebtn');
+
 			if(play){
-				playBtn.value = "\u23F8";
+				btnImg.src = "/maps/images/pausebtn.png";
 			}else{
-				playBtn.value = "\u23F5";
+				btnImg.src = "/maps/images/playbtn.png"
 			}
 		})
+
+		let playSlider = document.getElementById("playSlider");
+		console.log(playBtn.height);
+		playSlider.width = playControlBar.width - playBtn.height;
+		console.log(playSlider.width);
+
+
 	}
 
 	animate(time) {

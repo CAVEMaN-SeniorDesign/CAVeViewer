@@ -13,6 +13,11 @@
 	<script defer type="module" src="src/app.js"></script>
 </head>
 <body>
+	<!-- <div id="progress-container">
+		<div id="progress-bar">
+			<p>Loading Model...</p>
+		</div>
+	</div> -->
 	<header>
 		<img src="/images/CAVEMAN_Logo_Gray_Transparent.png" alt="CAVEMAN Logo"/>
 		<h1><a href="/">CAVeViewer</a></h1>
@@ -22,9 +27,11 @@
 		</div>
 	</main>
 	<section>
-		<div class="playControlBar">
-			<input type="button" value="&#x23F5;" id="playBtn">
-			<input type="range" min="0" max="1002" value="0" id="playSlider">
+		<div class="playControlBar" id="playControlBar">
+			<button id="playBtn">
+				<img src="/images/playbtn.png" class="playpausebtn">
+			</button>
+			<input type="range" min="0" max="1001" value="0" id="playSlider">
 		</div>
 	</section>
 </body>
