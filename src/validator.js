@@ -13,9 +13,9 @@ export class Validator {
 		this.el = el;
 		this.report = null;
 
-		this.toggleEl = document.createElement('div');
-		this.toggleEl.classList.add('report-toggle-wrap', 'hidden');
-		this.el.appendChild(this.toggleEl);
+		// this.toggleEl = document.createElement('div');
+		// this.toggleEl.classList.add('report-toggle-wrap', 'hidden');
+		// this.el.appendChild(this.toggleEl);
 	}
 
 	/**
