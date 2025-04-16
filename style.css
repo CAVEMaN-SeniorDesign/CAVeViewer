@@ -73,7 +73,7 @@ body {
 
 header {
   display: flex;
-  background: #353535;
+  background: #053163;
   padding: 0 2em;
   height: 4rem;
   line-height: 4rem;
@@ -85,6 +85,11 @@ header {
   z-index: 1;
 
   -webkit-app-region: drag;
+}
+
+header img {
+  width: 65px;
+  height: 65px;
 }
 
 header h1 {
@@ -100,6 +105,8 @@ header h1 > a {
   font-size: inherit;
   text-decoration: inherit;
 }
+
+
 
 .gui-wrap {
   position: absolute;
@@ -123,6 +130,22 @@ header h1 > a {
   header h1 {
     font-size: 1em;
   }
+}
+
+/********
+  Play Control Bar
+*/
+
+.playControlBar {
+  z-index: 10;
+  position: absolute;
+  display: block;
+  margin-left: 37.5%;
+  align-self: center;
+  bottom: 20px;
+  height: 50px;
+  width: 25%;
+
 }
 
 /******************************************************************************
