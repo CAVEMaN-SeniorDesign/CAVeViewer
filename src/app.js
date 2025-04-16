@@ -43,7 +43,7 @@ class App {
 		}
 
 		// Test loading .glb file
-		const filepath = "/3d-assets/texturedMesh.glb";
+		const filepath = "/maps/3d-assets/texturedMesh.glb";
 		fetch(new URL(filepath, import.meta.url))
 			.then(response => {
 				response.arrayBuffer().then(buffer => {
