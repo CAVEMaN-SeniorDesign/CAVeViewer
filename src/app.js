@@ -1,7 +1,10 @@
-import {Vector3} from 'three';
+import { Vector3 } from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Viewer } from './viewer.js';
-import { Validator } from './validator.js';
+import { ProgressContainer } from './components/progress-container.jsx';
+import { Header } from './components/header.jsx';
+import { Main } from './components/main.jsx';
+import { PlayBar } from './components/play-bar.jsx';
 import { Footer } from './components/footer';
 import queryString from 'query-string';
 
@@ -35,7 +38,6 @@ class App {
 		this.viewer = null;
 		this.viewerEl = null;
 		this.dropEl = el.querySelector('.dropzone');
-		this.validator = new Validator(el);
 
 		this.filepath = filepath;
 		this.startPos = startPos;
@@ -54,7 +56,6 @@ class App {
 		}
 
 		// Test loading .glb file
-		// this.filepath = "/maps/3d-assets/texturedMesh.glb";
 		fetch(new URL(this.filepath, import.meta.url))
 			.then(response => {
 				response.arrayBuffer().then(buffer => {
@@ -126,11 +127,6 @@ class App {
 			.load(fileURL, rootPath, fileMap)
 			.catch((e) => this.onError(e))
 			.then((gltf) => {
-				// TODO: GLTFLoader parsing can fail on invalid files. Ideally,
-				// we could run the validator either way.
-				if (!this.options.kiosk) {
-					this.validator.validate(fileURL, rootPath, fileMap, gltf);
-				}
 				cleanup();
 			});
 	}
@@ -152,12 +148,18 @@ class App {
 	}
 }
 
+document.body.innerHTML += ProgressContainer();
+document.body.innerHTML += Header();
+document.body.innerHTML += Main();
+document.body.innerHTML += PlayBar();
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(document.body, location, "/maps/3d-assets/texturedMesh.glb", new Vector3(.5, .41666, 1.93), new Vector3(-.404, -.3164, -1.54), new Vector3(-.5137, -.392, -1.96));
+	const app = new App(document.body, location, "/3d-assets/texturedMesh.glb", new Vector3(.5, .41666, 1.93), new Vector3(-.404, -.3164, -1.54), new Vector3(-.5137, -.392, -1.96));
 
 	window.VIEWER.app = app;
 
 	console.info('[glTF Viewer] Debugging data exported as `window.VIEWER`.');
+
+	console.log(document)
 });
