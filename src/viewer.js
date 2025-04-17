@@ -37,6 +37,7 @@ import { environments } from './environments.js';
 let iter = 0;
 let prev_iter = -1;
 let play = false;
+let movement = true;
 
 
 const DEFAULT_CAMERA = '[default]';
@@ -193,11 +194,16 @@ export class Viewer {
 			this.axesRenderer.render(this.axesScene, this.axesCamera);
 		}
 
-		const steps = 1000;		
+		const steps = 1000;	
+		
+		if(this.startPos.x == -1 && this.startPos.y == -1 && this.startPos.z == -1)
+		{
+			movement = false;
+		}
 
 		if(this.controls.object.position.x != 0 && this.controls.object.position.y != 0 && this.controls.object.position.z != 0)
 		{
-			if(play){
+			if(play && movement){
 				document.getElementById("playSlider").value = parseInt(document.getElementById("playSlider").value) + 1;
 				this.controls.enableZoom = false;
 				this.controls.enablePan = false;
@@ -208,7 +214,7 @@ export class Viewer {
 			
 			iter = document.getElementById("playSlider").value;
 			
-			if(iter != prev_iter){
+			if(iter != prev_iter && movement){
 				const traverseVec = new Vector3().subVectors(this.endPos, this.startPos);
 				let stepVecx = this.startPos.x + ((iter/steps) * traverseVec.x);
 				let stepVecy = this.startPos.y + ((iter/steps) * traverseVec.y);
@@ -231,8 +237,8 @@ export class Viewer {
 			play = false;
 		}
 
-		// console.log("Cam positions:", this.controls.object.position);
-		// console.log("Cam LookAt:", this.controls.target);
+		console.log("Cam positions:", this.controls.object.position);
+		console.log("Cam LookAt:", this.controls.target);
 		// console.log(iter)
 	}
 
