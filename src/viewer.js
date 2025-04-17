@@ -162,9 +162,9 @@ export class Viewer {
 			let btnImg = playBtn.querySelector('.playpausebtn');
 
 			if(play){
-				btnImg.src = "/maps/images/pausebtn.png";
+				btnImg.src = "/images/pausebtn.png";
 			}else{
-				btnImg.src = "/maps/images/playbtn.png"
+				btnImg.src = "/images/playbtn.png"
 			}
 		})
 

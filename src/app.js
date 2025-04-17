@@ -155,11 +155,10 @@ document.body.innerHTML += PlayBar();
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(document.body, location, "/3d-assets/texturedMesh.glb", new Vector3(.5, .41666, 1.93), new Vector3(-.404, -.3164, -1.54), new Vector3(-.5137, -.392, -1.96));
+	const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec));
 
 	window.VIEWER.app = app;
 
 	console.info('[glTF Viewer] Debugging data exported as `window.VIEWER`.');
 
-	console.log(document)
 });
