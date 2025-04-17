@@ -1,0 +1,5 @@
+"/maps/3d-assets/enlowtunneltextured.glb", new Vector3(.5, .41666, 1.93), new Vector3(-.404, -.3164, -1.54), new Vector3(-.5137, -.392, -1.96)
+
+"/maps/3d-assets/enlowtunnelmeshlabpc.glb", new Vector3(-0.395, -0.298, 1.6), new Vector3(.32, .261, -1.283), new Vector3(.4532, .371, -1.83)
+
+"/maps/3d-assets/TheCave.glb", new Vector3(.40724, .3168, 1.5933), new Vector3(-.25, -.188, -1.0382), new Vector3(-.404, -.30432, -1.6337)

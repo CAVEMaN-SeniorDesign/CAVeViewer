@@ -238,8 +238,8 @@ export class Viewer {
 			play = false;
 		}
 
-		// console.log("Cam positions:", this.controls.object.position);
-		// console.log("Cam LookAt:", this.controls.target);
+		console.log("Cam positions:", this.controls.object.position);
+		console.log("Cam LookAt:", this.controls.target);
 		// console.log(iter)
 	}
 

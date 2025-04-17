@@ -155,7 +155,7 @@ class App {
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(document.body, location, "/maps/3d-assets/texturedMesh.glb", new Vector3(.5, .41666, 1.93), new Vector3(-.404, -.3164, -1.54), new Vector3(-.5137, -.392, -1.96));
+	const app = new App(document.body, location, "/maps/3d-assets/TheCave.glb", new Vector3(.40724, .3168, 1.5933), new Vector3(-.25, -.188, -1.0382), new Vector3(-.404, -.30432, -1.6337));
 
 	window.VIEWER.app = app;
 
