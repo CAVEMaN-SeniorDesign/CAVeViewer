@@ -1,21 +1,250 @@
-<!doctype html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>CAVeViewer</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="stylesheet" href="../style.css" />
-	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet" />
-	<script>
-		const glb_filepath = "/3d-assets/enlowtunneltextured.glb";
-		const start_pos = [.5, .41666, 1.93];
-		const end_pos = [-.404, -.3164, -1.54];
-		const look_at_vec = [-.5137, -.392, -1.96];
-	</script>
-	<script defer type="module" src="../src/app.js"></script>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAVEMAN MAPS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		body {
+			background-color: #191919;
+			color: #FFF;
+		}
 
+        .card {
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			background-color: #053163;
+			color: #FFF;
+			align-self: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+        .carousel-control-prev, 
+        .carousel-control-next {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .carousel-inner {
+            padding: 1rem 0;
+        }
+        .card-title {
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #000;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+        .carousel-indicators {
+            position: relative;
+            margin-top: 20px;
+        }
+        .carousel-indicators [data-bs-target] {
+            background-color: #555;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        #carouselCards {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
 <body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4">CAVEMAN Maps</h1>
+        
+        <div id="carouselCards" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Dynamic slides will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- Carousel controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCards" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselCards" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            
+            <!-- Carousel indicators will be added dynamically -->
+            <div class="carousel-indicators"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Card data
+        const cardData = [
+            {
+                title: "Enlow Tunnel",
+                image: "/images/thumbnail_elt.png",
+                alt: "Enlow Tunnel Textured Map",
+                description: "Enlow Tunnel on the Montour Trail mapped by the CAVEMAN Rover!",
+                CAVeViewer: "/maps/enlowtunneltextured/",
+				vr_walkthrough: "",
+            },
+            {
+                title: "Enlow Tunnel - Point Cloud Render",
+                image: "/images/thumbnail_eltpc.png",
+                alt: "Enlow Tunnel Textured Map from Point Cloud",
+                description: "Enlow Tunnel Reconstructed using Point Cloud's and Poisson Reconstruction. Mapped by the CAVEMAN Rover!",
+                CAVeViewer: "/maps/enlowtunnelmeshlabpc/",
+				vr_walkthrough: "",
+            },
+            {
+                title: "Enlow Tunnel - Less Textured",
+                image: "/images/thumbnail_cave.png",
+                alt: "Enlow Tunnel Lesser Textured Map",
+                description: "Enlow Tunnel on the Montour Trail mapped by the CAVEMAN Rover! This map has less textures due to different mapping pipeline configurations.",
+                CAVeViewer: "/maps/TheCave/",
+				vr_walkthrough: "",
+            },
+			{
+                title: "Floor 4 Benedum Hallway",
+                image: "/images/thumbnail_f4b.png",
+                alt: "Floor 4 Benedum Hallway",
+                description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover!",
+                CAVeViewer: "/maps/Floor4Benedum/",
+				vr_walkthrough: "",
+            },
+            {
+                title: "Floor 4 Benedum Hallway - Again",
+                image: "/images/thumbnail_beh4be.png",
+                alt: "BEH Floor 4 Hallway",
+                description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover!",
+                CAVeViewer: "/maps/BEH4HallwayBE/",
+				vr_walkthrough: "",
+            },
+            {
+                title: "Floor 4 Benedum Hallway - Low Exposure",
+                image: "/images/thumbnail_f4bhle.png",
+                alt: "Floor 4 Benedum Hallway - Low Exposure",
+                description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover! The camera settings had less than ideal exposure.",
+                CAVeViewer: "/maps/Floor4BenedumLE/",
+				vr_walkthrough: "",
+            },
+            {
+                title: "Diulus Hallway",
+                image: "/images/thumbnail_diulus.png",
+                alt: "Diulus Hallway",
+                description: "Hallway within an off-campus house. Mapped using an iPhone 13.",
+                CAVeViewer: "/maps/DiulusHallway/",
+				vr_walkthrough: "",
+            },
+			{
+                title: "Desk Setup",
+                image: "/images/thumbnail_437desk.png",
+                alt: "Enlow Tunnel Textured Map",
+                description: "Desk Setup in BEH437 mapped using RTABMAP Texturing Output",
+                CAVeViewer: "/maps/desksetup437/",
+				vr_walkthrough: "",
+            },
+			{
+                title: "Another Floor 4 Benedum Hallway - Low Exposure",
+                image: "/images/thumbnail_f4bmeh.png",
+                alt: "Another Floor 4 Benedum Hallway",
+                description: "This is a low exposure hallway on Benedum's 4th floor, mapped by the CAVEMAN Rover!",
+                CAVeViewer: "/maps/Floor4BenedumLEmeh/",
+				vr_walkthrough: "",
+            },
+			{
+                title: "Tunnel of Sorts",
+                image: "/images/thumbnail_tunnel.png",
+                alt: "Tunnel of Sorts",
+                description: "Entrance of Enlow Tunnel with minimal texture, mapped by the CAVEMAN Rover!",
+                CAVeViewer: "/maps/tunnelquestionmark/",
+				vr_walkthrough: "",
+            }
+        ];
+
+        // Function to create a card element
+        function createCard(cardInfo) {
+            return `
+                <div class="card" style="width: 18rem;">
+                    <img src="${cardInfo.image}" class="card-img-top" alt="${cardInfo.alt}">
+                    <div class="card-body">
+                        <h5 class="card-title">${cardInfo.title}</h5>
+                        <p class="card-text">${cardInfo.description}</p>
+                        <a href="${cardInfo.CAVeViewer}" class="btn btn-primary">View in CAVeViewer</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to dynamically organize cards based on screen width
+        function organizeCarouselItems() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const indicatorsContainer = document.querySelector('.carousel-indicators');
+            carouselInner.innerHTML = '';
+            indicatorsContainer.innerHTML = '';
+            
+            // Determine number of cards per slide based on screen width
+            let cardsPerSlide;
+            if (window.innerWidth < 768) {
+                cardsPerSlide = 1; // Mobile: 1 card per slide
+            } else if (window.innerWidth < 992) {
+                cardsPerSlide = 2; // Tablet: 2 cards per slide
+            } else {
+                cardsPerSlide = 3; // Desktop: 3 cards per slide
+            }
+            
+            // Calculate number of slides needed
+            const totalSlides = Math.ceil(cardData.length / cardsPerSlide);
+            
+            // Create slides
+            for (let i = 0; i < totalSlides; i++) {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = `carousel-item ${i === 0 ? 'active' : ''}`;
+                
+                const cardContainer = document.createElement('div');
+                cardContainer.className = 'd-flex justify-content-center flex-wrap';
+                
+                // Add cards to this slide
+                for (let j = 0; j < cardsPerSlide; j++) {
+                    const cardIndex = i * cardsPerSlide + j;
+                    if (cardIndex < cardData.length) {
+                        cardContainer.innerHTML += createCard(cardData[cardIndex]);
+                    }
+                }
+                
+                slideDiv.appendChild(cardContainer);
+                carouselInner.appendChild(slideDiv);
+                
+                // Create indicator for this slide
+                const indicator = document.createElement('button');
+                indicator.setAttribute('type', 'button');
+                indicator.setAttribute('data-bs-target', '#carouselCards');
+                indicator.setAttribute('data-bs-slide-to', i.toString());
+                if (i === 0) {
+                    indicator.setAttribute('aria-current', 'true');
+                    indicator.className = 'active';
+                }
+                indicator.setAttribute('aria-label', `Slide ${i + 1}`);
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', organizeCarouselItems);
+        
+        // Run when window is resized
+        window.addEventListener('resize', organizeCarouselItems);
+    </script>
 </body>
+</html>
