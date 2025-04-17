@@ -6,6 +6,8 @@ import queryString from 'query-string';
 
 window.VIEWER = {};
 
+// let loading = true;
+
 if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
 	console.error('The File APIs are not fully supported in this browser.');
 } else if (!WebGL.isWebGLAvailable()) {
@@ -50,6 +52,10 @@ class App {
 					let filemap = new Map();
 					filemap.set(filepath, new File([buffer], filepath));
 					this.load(filemap);
+					// loading = false;
+
+					const loadingDiv = document.getElementById("progress-container");
+					loadingDiv.setAttribute('hidden', '');
 				})
 			})
 			.catch(error => {
