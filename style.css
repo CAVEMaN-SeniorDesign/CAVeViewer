@@ -133,6 +133,25 @@ header h1 > a {
 }
 
 /********
+  Loading Screen
+*/
+
+#progress-container {
+  z-index: 9;
+  margin: 0;
+  position: absolute;
+  font-size:x-large;
+  color: rgba(255, 255, 255, 1);
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/********
   Play Control Bar
 */
 
