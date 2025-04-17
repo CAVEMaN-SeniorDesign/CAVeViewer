@@ -26,6 +26,7 @@
 		"postversion": "git push && git push --tags"
 	},
 	"dependencies": {
+		"bootstrap": "^5.3.5",
 		"dat.gui": "^0.7.9",
 		"gltf-validator": "^2.0.0-dev.3.9",
 		"query-string": "^8.1.0",
