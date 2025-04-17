@@ -1,5 +1,6 @@
 services:
   caveviewer:
+    image: d3lta12/caveviewer
     build:
       context: ../
       dockerfile: docker/Dockerfile
