@@ -44,6 +44,11 @@ class App {
 		this.endPos = endPos;
 		this.lookAtVec = lookAtVec;
 
+		this.filepath = filepath;
+		this.startPos = startPos;
+		this.endPos = endPos;
+		this.lookAtVec = lookAtVec;
+
 		const options = this.options;
 
 		if (options.kiosk) {
@@ -155,7 +160,8 @@ document.body.innerHTML += PlayBar();
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec));
+  const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec));
+
 
 	window.VIEWER.app = app;
 
