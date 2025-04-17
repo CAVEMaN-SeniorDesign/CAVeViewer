@@ -1,3 +1,4 @@
+import {Vector3} from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Viewer } from './viewer.js';
 import { Validator } from './validator.js';
@@ -17,8 +18,12 @@ class App {
 	/**
 	 * @param  {Element} el
 	 * @param  {Location} location
+	 * @param  {String} filepath
+	 * @param  {Vector3} startPos
+	 * @param  {Vector3} endPos
+	 * @param  {Vector3} lookAtVec
 	 */
-	constructor(el, location) {
+	constructor(el, location, filepath, startPos, endPos, lookAtVec) {
 		const hash = location.hash ? queryString.parse(location.hash) : {};
 		this.options = {
 			kiosk: Boolean(hash.kiosk),
@@ -32,6 +37,11 @@ class App {
 		this.dropEl = el.querySelector('.dropzone');
 		this.validator = new Validator(el);
 
+		this.filepath = filepath;
+		this.startPos = startPos;
+		this.endPos = endPos;
+		this.lookAtVec = lookAtVec;
+
 		const options = this.options;
 
 		if (options.kiosk) {
@@ -44,12 +54,12 @@ class App {
 		}
 
 		// Test loading .glb file
-		const filepath = "/maps/3d-assets/texturedMesh.glb";
-		fetch(new URL(filepath, import.meta.url))
+		// this.filepath = "/maps/3d-assets/texturedMesh.glb";
+		fetch(new URL(this.filepath, import.meta.url))
 			.then(response => {
 				response.arrayBuffer().then(buffer => {
 					let filemap = new Map();
-					filemap.set(filepath, new File([buffer], filepath));
+					filemap.set(this.filepath, new File([buffer], this.filepath));
 					this.load(filemap);
 
 					const loadingDiv = document.getElementById("progress-container");
@@ -70,7 +80,7 @@ class App {
 		this.viewerEl.classList.add('viewer');
 		this.dropEl.innerHTML = '';
 		this.dropEl.appendChild(this.viewerEl);
-		this.viewer = new Viewer(this.viewerEl, this.options);
+		this.viewer = new Viewer(this.viewerEl, this.options, this.startPos, this.endPos, this.lookAtVec);
 		return this.viewer;
 	}
 
@@ -145,7 +155,7 @@ class App {
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(document.body, location);
+	const app = new App(document.body, location, "/maps/3d-assets/texturedMesh.glb", new Vector3(.5, .41666, 1.93), new Vector3(-.404, -.3164, -1.54), new Vector3(-.5137, -.392, -1.96));
 
 	window.VIEWER.app = app;
 
