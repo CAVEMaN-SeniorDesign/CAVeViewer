@@ -57,9 +57,17 @@ const Preset = { ASSET_GENERATOR: 'assetgenerator' };
 Cache.enabled = true;
 
 export class Viewer {
-	constructor(el, options) {
+	constructor(el, options, startPos, endPos, lookAtVec) {
 		this.el = el;
 		this.options = options;
+		this.startPos = startPos;
+		this.endPos = endPos;
+		this.lookAtVec = lookAtVec;
+
+		// this.startPos = new Vector3(.5, .41666, 1.93);
+		// this.endPos = new Vector3(-.404, -.3164, -1.54);
+		// this.lookAtVec = new Vector3(-.5137, -.392, -1.96);
+
 
 		this.lights = [];
 		this.content = null;
@@ -154,18 +162,14 @@ export class Viewer {
 			let btnImg = playBtn.querySelector('.playpausebtn');
 
 			if(play){
-				btnImg.src = "/maps/images/pausebtn.png";
+				btnImg.src = "/images/pausebtn.png";
 			}else{
-				btnImg.src = "/maps/images/playbtn.png"
+				btnImg.src = "/images/playbtn.png"
 			}
 		})
 
 		let playSlider = document.getElementById("playSlider");
-		console.log(playBtn.height);
 		playSlider.width = playControlBar.width - playBtn.height;
-		console.log(playSlider.width);
-
-
 	}
 
 	animate(time) {
@@ -189,14 +193,7 @@ export class Viewer {
 			this.axesRenderer.render(this.axesScene, this.axesCamera);
 		}
 
-		const steps = 1000;
-		const startPos = new Vector3(.5, .41666, 1.93);
-		const endPos = new Vector3(-.404, -.3164, -1.54);
-		// const endPos = new Vector3(.192978, .1612, .70865);
-
-		const lookAtVec = new Vector3(-.5137, -.392, -1.96);
-
-		
+		const steps = 1000;		
 
 		if(this.controls.object.position.x != 0 && this.controls.object.position.y != 0 && this.controls.object.position.z != 0)
 		{
@@ -210,19 +207,15 @@ export class Viewer {
 			
 			
 			iter = document.getElementById("playSlider").value;
-			// console.log(iter);
-			// console.log(traverseVec);
-			
-			
 			
 			if(iter != prev_iter){
-				const traverseVec = endPos.sub(startPos);
-				let stepVecx = startPos.x + ((iter/steps) * traverseVec.x);
-				let stepVecy = startPos.y + ((iter/steps) * traverseVec.y);
-				let stepVecz = startPos.z + ((iter/steps) * traverseVec.z);
+				const traverseVec = new Vector3().subVectors(this.endPos, this.startPos);
+				let stepVecx = this.startPos.x + ((iter/steps) * traverseVec.x);
+				let stepVecy = this.startPos.y + ((iter/steps) * traverseVec.y);
+				let stepVecz = this.startPos.z + ((iter/steps) * traverseVec.z);
 
 				this.controls.object.position.set(stepVecx, stepVecy, stepVecz);
-				this.controls.target.set(lookAtVec.x, lookAtVec.y, lookAtVec.z);
+				this.controls.target.set(this.lookAtVec.x, this.lookAtVec.y, this.lookAtVec.z);
 				prev_iter = iter;
 			}
 		}
@@ -237,10 +230,6 @@ export class Viewer {
 		if(iter >= steps){
 			play = false;
 		}
-
-		// console.log("Cam positions:", this.controls.object.position);
-		// console.log("Cam LookAt:", this.controls.target);
-		// console.log(iter)
 	}
 
 	resize() {

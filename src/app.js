@@ -1,6 +1,10 @@
+import { Vector3 } from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { Viewer } from './viewer.js';
-import { Validator } from './validator.js';
+import { ProgressContainer } from './components/progress-container.jsx';
+import { Header } from './components/header.jsx';
+import { Main } from './components/main.jsx';
+import { PlayBar } from './components/play-bar.jsx';
 import { Footer } from './components/footer';
 import queryString from 'query-string';
 
@@ -17,8 +21,12 @@ class App {
 	/**
 	 * @param  {Element} el
 	 * @param  {Location} location
+	 * @param  {String} filepath
+	 * @param  {Vector3} startPos
+	 * @param  {Vector3} endPos
+	 * @param  {Vector3} lookAtVec
 	 */
-	constructor(el, location) {
+	constructor(el, location, filepath, startPos, endPos, lookAtVec) {
 		const hash = location.hash ? queryString.parse(location.hash) : {};
 		this.options = {
 			kiosk: Boolean(hash.kiosk),
@@ -30,7 +38,11 @@ class App {
 		this.viewer = null;
 		this.viewerEl = null;
 		this.dropEl = el.querySelector('.dropzone');
-		this.validator = new Validator(el);
+
+		this.filepath = filepath;
+		this.startPos = startPos;
+		this.endPos = endPos;
+		this.lookAtVec = lookAtVec;
 
 		const options = this.options;
 
@@ -44,12 +56,11 @@ class App {
 		}
 
 		// Test loading .glb file
-		const filepath = "/maps/3d-assets/texturedMesh.glb";
-		fetch(new URL(filepath, import.meta.url))
+		fetch(new URL(this.filepath, import.meta.url))
 			.then(response => {
 				response.arrayBuffer().then(buffer => {
 					let filemap = new Map();
-					filemap.set(filepath, new File([buffer], filepath));
+					filemap.set(this.filepath, new File([buffer], this.filepath));
 					this.load(filemap);
 
 					const loadingDiv = document.getElementById("progress-container");
@@ -70,7 +81,7 @@ class App {
 		this.viewerEl.classList.add('viewer');
 		this.dropEl.innerHTML = '';
 		this.dropEl.appendChild(this.viewerEl);
-		this.viewer = new Viewer(this.viewerEl, this.options);
+		this.viewer = new Viewer(this.viewerEl, this.options, this.startPos, this.endPos, this.lookAtVec);
 		return this.viewer;
 	}
 
@@ -116,11 +127,6 @@ class App {
 			.load(fileURL, rootPath, fileMap)
 			.catch((e) => this.onError(e))
 			.then((gltf) => {
-				// TODO: GLTFLoader parsing can fail on invalid files. Ideally,
-				// we could run the validator either way.
-				if (!this.options.kiosk) {
-					this.validator.validate(fileURL, rootPath, fileMap, gltf);
-				}
 				cleanup();
 			});
 	}
@@ -142,12 +148,17 @@ class App {
 	}
 }
 
+document.body.innerHTML += ProgressContainer();
+document.body.innerHTML += Header();
+document.body.innerHTML += Main();
+document.body.innerHTML += PlayBar();
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(document.body, location);
+	const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec));
 
 	window.VIEWER.app = app;
 
 	console.info('[glTF Viewer] Debugging data exported as `window.VIEWER`.');
+
 });
