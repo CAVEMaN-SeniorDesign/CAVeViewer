@@ -169,11 +169,7 @@ export class Viewer {
 		})
 
 		let playSlider = document.getElementById("playSlider");
-		console.log(playBtn.height);
 		playSlider.width = playControlBar.width - playBtn.height;
-		console.log(playSlider.width);
-
-
 	}
 
 	animate(time) {
@@ -211,12 +207,9 @@ export class Viewer {
 			
 			
 			iter = document.getElementById("playSlider").value;
-			console.log(iter);
-			
 			
 			if(iter != prev_iter){
 				const traverseVec = new Vector3().subVectors(this.endPos, this.startPos);
-				// console.log(traverseVec);
 				let stepVecx = this.startPos.x + ((iter/steps) * traverseVec.x);
 				let stepVecy = this.startPos.y + ((iter/steps) * traverseVec.y);
 				let stepVecz = this.startPos.z + ((iter/steps) * traverseVec.z);
@@ -237,10 +230,6 @@ export class Viewer {
 		if(iter >= steps){
 			play = false;
 		}
-
-		// console.log("Cam positions:", this.controls.object.position);
-		// console.log("Cam LookAt:", this.controls.target);
-		// console.log(iter)
 	}
 
 	resize() {
