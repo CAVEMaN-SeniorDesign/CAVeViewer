@@ -26,7 +26,7 @@ class App {
 	 * @param  {Vector3} endPos
 	 * @param  {Vector3} lookAtVec
 	 */
-	constructor(el, location, filepath, startPos, endPos, lookAtVec) {
+	constructor(el, location, filepath, startPos, endPos, lookAtVec, showControls, autoRotateModel, playBarEnable) {
 		const hash = location.hash ? queryString.parse(location.hash) : {};
 		this.options = {
 			kiosk: Boolean(hash.kiosk),
@@ -43,11 +43,10 @@ class App {
 		this.startPos = startPos;
 		this.endPos = endPos;
 		this.lookAtVec = lookAtVec;
-
-		this.filepath = filepath;
-		this.startPos = startPos;
-		this.endPos = endPos;
-		this.lookAtVec = lookAtVec;
+		this.showControls = showControls;
+        this.autoRotateModel = autoRotateModel;
+		this.playBarEnable = playBarEnable;
+		console.log(this.playBarEnable);
 
 		const options = this.options;
 
@@ -86,7 +85,7 @@ class App {
 		this.viewerEl.classList.add('viewer');
 		this.dropEl.innerHTML = '';
 		this.dropEl.appendChild(this.viewerEl);
-		this.viewer = new Viewer(this.viewerEl, this.options, this.startPos, this.endPos, this.lookAtVec);
+		this.viewer = new Viewer(this.viewerEl, this.options, this.startPos, this.endPos, this.lookAtVec, this.showControls, this.autoRotateModel, this.playBarEnable);
 		return this.viewer;
 	}
 
@@ -154,13 +153,17 @@ class App {
 }
 
 document.body.innerHTML += ProgressContainer();
-document.body.innerHTML += Header();
+document.body.innerHTML = Header() + document.body.innerHTML;
 document.body.innerHTML += Main();
-document.body.innerHTML += PlayBar();
+
+if(playBarEnable){
+	document.body.innerHTML += PlayBar();
+}
+
 document.body.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec));
+  const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec), showControls, autoRotateModel, playBarEnable);
 
 
 	window.VIEWER.app = app;
