@@ -78,6 +78,7 @@ header {
   height: 4rem;
   line-height: 4rem;
   align-items: center;
+  justify-content: center;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
@@ -87,9 +88,9 @@ header {
   -webkit-app-region: drag;
 }
 
-header img {
-  width: 65px;
+header img, header a {
   height: 65px;
+  width: 65px;
 }
 
 header h1 {
@@ -97,15 +98,9 @@ header h1 {
   font-size: 1.4rem;
   font-weight: 300;
   line-height: 4rem;
+  text-align: center;
   margin: 0;
 }
-
-header h1 > a {
-  color: inherit;
-  font-size: inherit;
-  text-decoration: inherit;
-}
-
 
 
 .gui-wrap {

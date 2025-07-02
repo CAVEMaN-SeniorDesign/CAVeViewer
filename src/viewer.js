@@ -58,12 +58,15 @@ const Preset = { ASSET_GENERATOR: 'assetgenerator' };
 Cache.enabled = true;
 
 export class Viewer {
-	constructor(el, options, startPos, endPos, lookAtVec) {
+	constructor(el, options, startPos, endPos, lookAtVec, showControls=false, autoRotateModel=false, playBarEnable=true) {
 		this.el = el;
 		this.options = options;
 		this.startPos = startPos;
 		this.endPos = endPos;
 		this.lookAtVec = lookAtVec;
+		this.showControls = showControls;
+		this.autoRotateModel = autoRotateModel;
+		this.playBarEnable = playBarEnable;
 
 		// this.startPos = new Vector3(.5, .41666, 1.93);
 		// this.endPos = new Vector3(-.404, -.3164, -1.54);
@@ -88,7 +91,7 @@ export class Viewer {
 			wireframe: false,
 			skeleton: false,
 			grid: false,
-			autoRotate: false,
+			autoRotate: autoRotateModel,
 
 			// Lights
 			punctualLights: true,
@@ -146,31 +149,37 @@ export class Viewer {
 		this.axesHelper = null;
 
 		this.addAxesHelper();
-		this.addGUI();
-		if (options.kiosk) this.gui.close();
+
+		if(this.showControls){
+			this.addGUI();
+			if (options.kiosk) this.gui.close();
+		}
 
 		this.animate = this.animate.bind(this);
 		requestAnimationFrame(this.animate);
 		window.addEventListener('resize', this.resize.bind(this), false);
 
-		let playControlBar = document.getElementById("playControlBar");
-		let playBtn = document.getElementById("playBtn");
+		console.log(this.playBarEnable);
+		if(this.playBarEnable){
+			let playControlBar = document.getElementById("playControlBar");
+			let playBtn = document.getElementById("playBtn");
 
-		playBtn.addEventListener('click', (e) => {
-			console.log("Clicked Play Button");
-			play = !play;
+			playBtn.addEventListener('click', (e) => {
+				console.log("Clicked Play Button");
+				play = !play;
 
-			let btnImg = playBtn.querySelector('.playpausebtn');
+				let btnImg = playBtn.querySelector('.playpausebtn');
 
-			if(play){
-				btnImg.src = "/images/pausebtn.png";
-			}else{
-				btnImg.src = "/images/playbtn.png"
-			}
-		})
+				if(play){
+					btnImg.src = "/images/pausebtn.png";
+				}else{
+					btnImg.src = "/images/playbtn.png"
+				}
+			})
 
-		let playSlider = document.getElementById("playSlider");
-		playSlider.width = playControlBar.width - playBtn.height;
+			let playSlider = document.getElementById("playSlider");
+			playSlider.width = playControlBar.width - playBtn.height;
+		}
 	}
 
 	animate(time) {
@@ -203,16 +212,18 @@ export class Viewer {
 
 		if(this.controls.object.position.x != 0 && this.controls.object.position.y != 0 && this.controls.object.position.z != 0)
 		{
-			if(play && movement){
-				document.getElementById("playSlider").value = parseInt(document.getElementById("playSlider").value) + 1;
-				this.controls.enableZoom = false;
-				this.controls.enablePan = false;
-				this.controls.enableRotate = false;
-				this.controls.enabled = false;
+			if(this.playBarEnable){
+				if(play && movement){
+					document.getElementById("playSlider").value = parseInt(document.getElementById("playSlider").value) + 1;
+					this.controls.enableZoom = false;
+					this.controls.enablePan = false;
+					this.controls.enableRotate = false;
+					this.controls.enabled = false;
+				}
+				
+				
+				iter = document.getElementById("playSlider").value;
 			}
-			
-			
-			iter = document.getElementById("playSlider").value;
 			
 			if(iter != prev_iter && movement){
 				const traverseVec = new Vector3().subVectors(this.endPos, this.startPos);
@@ -237,13 +248,22 @@ export class Viewer {
 			play = false;
 		}
 
-		console.log("Cam positions:", this.controls.object.position);
-		console.log("Cam LookAt:", this.controls.target);
+		// console.log("Cam positions:", this.controls.object.position);
+		// console.log("Cam LookAt:", this.controls.target);
 		// console.log(iter)
 	}
 
 	resize() {
-		const { clientHeight, clientWidth } = this.el.parentElement;
+		// const { clientHeight, clientWidth } = this.el.parentElement;
+		// console.log(clientHeight, clientWidth);
+
+		const elemW = this.el.offsetWidth;
+		const elemH = this.el.offsetHeight;
+		// console.log(elemW, elemH);
+
+		let clientHeight = elemH;
+		let clientWidth = elemW;
+
 
 		this.defaultCamera.aspect = clientWidth / clientHeight;
 		this.defaultCamera.updateProjectionMatrix();
@@ -380,7 +400,9 @@ export class Viewer {
 		this.setClips(clips);
 
 		this.updateLights();
-		this.updateGUI();
+		if(this.showControls){
+			this.updateGUI();
+		}
 		this.updateEnvironment();
 		this.updateDisplay();
 
