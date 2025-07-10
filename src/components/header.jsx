@@ -7,49 +7,39 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-export function Header(page_title="CAVeViewer") {
+export function Header({params}) {
     return (
-            <Navbar key="false" expand="false" className="bg-body-tertiary mb-3">
+            <Navbar key="false" expand="false" className="header" variant="dark">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
+                <Navbar.Brand>
+                    <a href="/" className='logopic'><img src="/images/CAVEMAN_Logo_Gray_Transparent.png" alt="CAVEMAN Logo" className="d-inline-block logopic" /></a>
+                    <h1 className="d-inline-block align-bottom">{params.page_title}</h1>
+                </Navbar.Brand>
+                <Navbar.Brand></Navbar.Brand>
                 <Navbar.Offcanvas
                 id={`offcanvasNavbar-expand-lg`}
                 aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
-                placement="end"
+                placement="start"
+                className="offcanvassection"
+                variant="dark"
                 >
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-                    Offcanvas
+                    <a href="/" className='logopic'><img src="/images/CAVEMAN_Logo_Gray_Transparent.png" alt="CAVEMAN Logo" className="d-inline-block logopic" /></a>
+                    <h1 className="d-inline-block align-bottom">CAVEMAN</h1>
                     </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link href="#action1">Home</Nav.Link>
-                    <Nav.Link href="#action2">Link</Nav.Link>
-                    <NavDropdown
-                        title="Dropdown"
-                        id={`offcanvasNavbarDropdown-expand-lg`}
-                    >
-                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">
-                        Another action
-                        </NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action5">
-                        Something else here
-                        </NavDropdown.Item>
-                    </NavDropdown>
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/mechdesign/">Mechanical Design</Nav.Link>
+                    <Nav.Link href="/hw/">Hardware</Nav.Link>
+                    <Nav.Link href="/embedded/">Low Level Control</Nav.Link>
+                    <Nav.Link href="#/ros/">High Level Navigation</Nav.Link>
+                    <Nav.Link href="/maps/">Maps</Nav.Link>
+                    <Nav.Link href="/contact/">Contact</Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
-                    <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
-                        aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                    </Form>
                 </Offcanvas.Body>
                 </Navbar.Offcanvas>
             </Container>

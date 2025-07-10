@@ -153,7 +153,6 @@ class App {
 }
 
 document.body.innerHTML += ProgressContainer();
-document.body.innerHTML = Header() + document.body.innerHTML;
 document.body.innerHTML += Main();
 
 if(playBarEnable){

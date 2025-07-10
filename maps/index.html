@@ -66,11 +66,8 @@
     </style>
 </head>
 <body>
-    <script type="module">
-        import { Header } from "../src/components/header.jsx";
-        document.body.innerHTML = Header("CAVEMAN Maps") + document.body.innerHTML;
-    </script>
     <main>
+        <div id="headerroot"></div>
         <div class="container py-4">            
             <div id="carouselCards" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -92,6 +89,8 @@
             </div>
         </div>
 
+        <script defer type="module" src="../../src/stdpageheader.jsx"></script>
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         <script>
             // Card data
