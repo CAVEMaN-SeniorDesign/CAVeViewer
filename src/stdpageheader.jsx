@@ -1,4 +1,4 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Header } from './components/header.jsx';
 

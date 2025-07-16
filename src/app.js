@@ -52,7 +52,9 @@ class App {
 
 		if (options.kiosk) {
 			const headerEl = document.querySelector('header');
-			headerEl.style.display = 'none';
+			if (headerEl) {
+				headerEl.style.display = 'none';
+			}
 		}
 
 		if (options.model) {
@@ -68,7 +70,9 @@ class App {
 					this.load(filemap);
 
 					const loadingDiv = document.getElementById("progress-container");
-					loadingDiv.setAttribute('hidden', '');
+					if (loadingDiv) {
+						loadingDiv.setAttribute('hidden', '');
+					}
 				})
 			})
 			.catch(error => {
@@ -152,21 +156,23 @@ class App {
 	}
 }
 
-document.body.innerHTML += ProgressContainer();
-document.body.innerHTML += Main();
+// Get the app content container
+const appContentEl = document.getElementById('app-content');
 
-if(playBarEnable){
-	document.body.innerHTML += PlayBar();
+// Add components to the app content container
+appContentEl.innerHTML += ProgressContainer();
+appContentEl.innerHTML += Main();
+
+if (playBarEnable) {
+	appContentEl.innerHTML += PlayBar();
 }
 
-document.body.innerHTML += Footer();
+appContentEl.innerHTML += Footer();
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new App(document.body, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec), showControls, autoRotateModel, playBarEnable);
-
+	const app = new App(appContentEl, location, glb_filepath, new Vector3(...start_pos), new Vector3(...end_pos), new Vector3(...look_at_vec), showControls, autoRotateModel, playBarEnable);
 
 	window.VIEWER.app = app;
 
 	console.info('[glTF Viewer] Debugging data exported as `window.VIEWER`.');
-
 });

@@ -1,15 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export function Header({params}) {
     return (
-            <Navbar key="false" expand="false" className="header" variant="dark">
+            <Navbar key="false" expand="false" className="header" variant="dark" style={{padding: '0 2em',}}>
             <Container fluid>
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
                 <Navbar.Brand>

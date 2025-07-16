@@ -16,11 +16,26 @@ body {
   flex-direction: column;
 }
 
+/* Make sure the header root takes up the header space */
+#headerroot {
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+/* Make sure the app content takes up the remaining space */
+#app-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 0; /* This forces the flex item to respect flex-grow */
+}
+
 .wrap {
   display: flex;
   width: 100vw;
   flex-grow: 1;
   position: relative;
+  height: 100%; /* Ensure it takes full height of its container */
 }
 
 .dropzone {
@@ -89,8 +104,16 @@ body {
 }
 
 nav, .offcanvassection {
+  background: #053163;
   background-color: #053163;
   color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
+}
+
+.offcanvas-header, .offcanvas-body{
+  background-color: #053163;
+  color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
 }
 
 .logopic {
