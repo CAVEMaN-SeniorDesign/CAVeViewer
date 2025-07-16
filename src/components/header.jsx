@@ -33,7 +33,7 @@ export function Header({params}) {
                     <Nav.Link href="/mechdesign/">Mechanical Design</Nav.Link>
                     <Nav.Link href="/hw/">Hardware</Nav.Link>
                     <Nav.Link href="/embedded/">Low Level Control</Nav.Link>
-                    <Nav.Link href="#/ros/">High Level Navigation</Nav.Link>
+                    <Nav.Link href="/ros/">High Level Navigation</Nav.Link>
                     <Nav.Link href="/maps/">Maps</Nav.Link>
                     <Nav.Link href="/contact/">Contact</Nav.Link>
                     </Nav>
