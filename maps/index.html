@@ -89,6 +89,22 @@
             </div>
         </div>
 
+        <div class="modal fade" data-bs-theme="dark" id="diulus" tabindex="-1" aria-labelledby="diulus" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="diulus">Diulus Hallway Map Video</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
         <script defer type="module" src="../../src/stdpageheader.jsx"></script>
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -101,7 +117,7 @@
                     alt: "Enlow Tunnel Textured Map",
                     description: "Enlow Tunnel on the Montour Trail in Coraopolis, PA, mapped by the CAVEMAN Rover! The best map attained yet!",
                     CAVeViewer: "/maps/enlowtunneltextured/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "enlowtunnelmodal",
                 },
                 {
                     title: "Enlow Tunnel - Point Cloud Render",
@@ -109,7 +125,7 @@
                     alt: "Enlow Tunnel Textured Map from Point Cloud",
                     description: "Enlow Tunnel Reconstructed using Point Clouds and Poisson Reconstruction. Mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/enlowtunnelmeshlabpc/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "enlowpc",
                 },
                 {
                     title: "Enlow Tunnel - Less Textured",
@@ -117,7 +133,7 @@
                     alt: "Enlow Tunnel Lesser Textured Map",
                     description: "Enlow Tunnel on the Montour Trail mapped by the CAVEMAN Rover! This map has less textures due to different mapping pipeline configurations.",
                     CAVeViewer: "/maps/TheCave/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "enlowlt",
                 },
                 {
                     title: "Floor 4 Benedum Hallway",
@@ -125,7 +141,7 @@
                     alt: "Floor 4 Benedum Hallway",
                     description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/Floor4Benedum/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "f4b",
                 },
                 {
                     title: "Floor 4 Benedum Hallway - Again",
@@ -133,7 +149,7 @@
                     alt: "BEH Floor 4 Hallway",
                     description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/BEH4HallwayBE/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "f4bha",
                 },
                 {
                     title: "Floor 4 Benedum Hallway - Low Exposure",
@@ -141,7 +157,7 @@
                     alt: "Floor 4 Benedum Hallway - Low Exposure",
                     description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover! The camera settings had less than ideal exposure.",
                     CAVeViewer: "/maps/Floor4BenedumLE/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "f4bh",
                 },
                 {
                     title: "Diulus Hallway",
@@ -149,7 +165,7 @@
                     alt: "Diulus Hallway",
                     description: "Hallway within an off-campus house. Mapped using an iPhone 13.",
                     CAVeViewer: "/maps/DiulusHallway/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "diulus",
                 },
                 {
                     title: "Desk Setup",
@@ -157,7 +173,7 @@
                     alt: "Enlow Tunnel Textured Map",
                     description: "Desk Setup in BEH437 mapped using RTABMAP Texturing Output",
                     CAVeViewer: "/maps/desksetup437/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "desksetup",
                 },
                 {
                     title: "Another Floor 4 Benedum Hallway - Low Exposure",
@@ -165,7 +181,7 @@
                     alt: "Another Floor 4 Benedum Hallway",
                     description: "This is a low exposure hallway on Benedum's 4th floor, mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/Floor4BenedumLEmeh/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "af4bh",
                 },
                 {
                     title: "Tunnel of Sorts",
@@ -173,7 +189,7 @@
                     alt: "Tunnel of Sorts",
                     description: "Entrance of Enlow Tunnel with minimal texture, mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/tunnelquestionmark/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "tunnel",
                 }
             ];
 
@@ -187,7 +203,7 @@
                             <p class="card-text" style="height: 50%;">${cardInfo.description}</p>
                             <div class="d-grid gap-2 mx-auto" style="height: 20%;">
                                 <a href="${cardInfo.CAVeViewer}" class="btn btn-primary btn-block">View in CAVeViewer</a>
-                                <a href="${cardInfo.vr_walkthrough}" class="btn btn-primary btn-block">View VR Walkthrough</a>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#${cardInfo.vr_walkthrough}" class="btn btn-primary btn-block">View VR Walkthrough</a>
                             </div>
                         </div>
                     </div>
