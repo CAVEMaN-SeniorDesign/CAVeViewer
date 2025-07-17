@@ -16,11 +16,26 @@ body {
   flex-direction: column;
 }
 
+/* Make sure the header root takes up the header space */
+#headerroot {
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+/* Make sure the app content takes up the remaining space */
+#app-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 0; /* This forces the flex item to respect flex-grow */
+}
+
 .wrap {
   display: flex;
   width: 100vw;
   flex-grow: 1;
   position: relative;
+  height: 100%; /* Ensure it takes full height of its container */
 }
 
 .dropzone {
@@ -68,14 +83,14 @@ body {
 }
 
 /******************************************************************************
- * Header
+ * .header
  */
 
-header {
+.header {
   display: flex;
   background: #053163;
+  background-color: #053163;
   padding: 0 2em;
-  height: 4rem;
   line-height: 4rem;
   align-items: center;
   justify-content: center;
@@ -88,12 +103,26 @@ header {
   -webkit-app-region: drag;
 }
 
-header img, header a {
-  height: 65px;
-  width: 65px;
+nav, .offcanvassection {
+  background: #053163;
+  background-color: #053163;
+  color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
 }
 
-header h1 {
+.offcanvas-header, .offcanvas-body{
+  background-color: #053163;
+  color: #F5F5F5;
+  font-family: 'Raleway', sans-serif;
+}
+
+.logopic {
+  height: 65px;
+  width: 65px;
+  text-decoration: none;
+}
+
+.logotext {
   color: #F5F5F5;
   font-size: 1.4rem;
   font-weight: 300;
@@ -122,7 +151,7 @@ header h1 {
 }
 
 @media screen and (max-width: 700px) {
-  header h1 {
+  .header h1 {
     font-size: 1em;
   }
 }
@@ -383,3 +412,25 @@ footer .separator {
     opacity: 0;
   }
 }
+
+/******************************************************************************
+   * Homepage
+   */
+
+   .title {
+    color: white;
+   }
+
+   .canvassquareparent {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+   }
+
+   .canvassquare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   }

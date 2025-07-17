@@ -9,7 +9,10 @@ import { TestApp } from "../src/components/gltf"
 import { Gltfmesh } from "../src/components/gltf";
 import { Header } from './components/header.jsx';
 
-document.body.innerHTML = Header("CAVEMAN") + document.body.innerHTML;
+const header = createRoot(document.getElementById("headerroot"));
+header.render(<Header params={{page_title: 'CAVEMAN'}}/>);
+
+
 const root = createRoot(document.getElementById("buddycanvas"));
 root.render(
   <StrictMode>
