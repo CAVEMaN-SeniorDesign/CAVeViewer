@@ -11,7 +11,7 @@ export function Header({params}) {
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
                 <Navbar.Brand>
                     <a href="/" className='logopic'><img src="/images/CAVEMAN_Logo_Gray_Transparent.png" alt="CAVEMAN Logo" className="d-inline-block logopic" /></a>
-                    <h1 className="d-inline-block align-bottom">{params.page_title}</h1>
+                    <h1 className="d-none d-md-inline-block align-bottom">{params.page_title}</h1>
                 </Navbar.Brand>
                 <Navbar.Brand></Navbar.Brand>
                 <Navbar.Offcanvas
