@@ -69,7 +69,7 @@
     <main>
         <div id="headerroot"></div>
         <div class="container py-4">            
-            <div id="carouselCards" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselCards" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
                 <div class="carousel-inner">
                     <!-- Dynamic slides will be inserted here by JavaScript -->
                 </div>
@@ -101,7 +101,8 @@
                     alt: "Enlow Tunnel Textured Map",
                     description: "Enlow Tunnel on the Montour Trail in Coraopolis, PA, mapped by the CAVEMAN Rover! The best map attained yet!",
                     CAVeViewer: "/maps/enlowtunneltextured/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "enlowtunnelmodal",
+                    embedded_youtube_link: "GMlwcKamOEM?si=6RpY7R4TxNMyAb_Z"
                 },
                 {
                     title: "Enlow Tunnel - Point Cloud Render",
@@ -109,7 +110,7 @@
                     alt: "Enlow Tunnel Textured Map from Point Cloud",
                     description: "Enlow Tunnel Reconstructed using Point Clouds and Poisson Reconstruction. Mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/enlowtunnelmeshlabpc/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: -1,
                 },
                 {
                     title: "Enlow Tunnel - Less Textured",
@@ -117,7 +118,8 @@
                     alt: "Enlow Tunnel Lesser Textured Map",
                     description: "Enlow Tunnel on the Montour Trail mapped by the CAVEMAN Rover! This map has less textures due to different mapping pipeline configurations.",
                     CAVeViewer: "/maps/TheCave/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "enlowlt",
+                    embedded_youtube_link: "UD9cPdoDOaY?si=nA1VZGz2keK51rNV"
                 },
                 {
                     title: "Floor 4 Benedum Hallway",
@@ -125,7 +127,8 @@
                     alt: "Floor 4 Benedum Hallway",
                     description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/Floor4Benedum/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "f4b",
+                    embedded_youtube_link: "ccKx-MKUHWE?si=lID9MbRekx8LFtJ3"
                 },
                 {
                     title: "Floor 4 Benedum Hallway - Again",
@@ -133,7 +136,7 @@
                     alt: "BEH Floor 4 Hallway",
                     description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/BEH4HallwayBE/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: -1,
                 },
                 {
                     title: "Floor 4 Benedum Hallway - Low Exposure",
@@ -141,7 +144,8 @@
                     alt: "Floor 4 Benedum Hallway - Low Exposure",
                     description: "Floor 4 Benedum Hallway mapped by the CAVEMAN Rover! The camera settings had less than ideal exposure.",
                     CAVeViewer: "/maps/Floor4BenedumLE/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "f4bh",
+                    embedded_youtube_link: "gz_Dc18q1rU?si=ni_MnHWvOHYknKmW"
                 },
                 {
                     title: "Diulus Hallway",
@@ -149,7 +153,8 @@
                     alt: "Diulus Hallway",
                     description: "Hallway within an off-campus house. Mapped using an iPhone 13.",
                     CAVeViewer: "/maps/DiulusHallway/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "diulus",
+                    embedded_youtube_link: "EMApm7vezO4?si=V5TSRdAv8b0Cd4a6"
                 },
                 {
                     title: "Desk Setup",
@@ -157,7 +162,8 @@
                     alt: "Enlow Tunnel Textured Map",
                     description: "Desk Setup in BEH437 mapped using RTABMAP Texturing Output",
                     CAVeViewer: "/maps/desksetup437/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: "desksetup",
+                    embedded_youtube_link: "iMXw1UMdLZA?si=6sG3ROV3H-kilYlE"
                 },
                 {
                     title: "Another Floor 4 Benedum Hallway - Low Exposure",
@@ -165,7 +171,7 @@
                     alt: "Another Floor 4 Benedum Hallway",
                     description: "This is a low exposure hallway on Benedum's 4th floor, mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/Floor4BenedumLEmeh/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: -1,
                 },
                 {
                     title: "Tunnel of Sorts",
@@ -173,26 +179,93 @@
                     alt: "Tunnel of Sorts",
                     description: "Entrance of Enlow Tunnel with minimal texture, mapped by the CAVEMAN Rover!",
                     CAVeViewer: "/maps/tunnelquestionmark/",
-                    vr_walkthrough: "",
+                    vr_walkthrough: -1,
                 }
             ];
 
+            var carousel;
+
             // Function to create a card element
             function createCard(cardInfo) {
-                return `
+                let card = `
                     <div class="card overflow-auto" style="width: 18rem; height: 60vh; justify-content: center; align-items: center; text-align: center;">
                         <img src="${cardInfo.image}" class="card-img-top" alt="${cardInfo.alt}">
                         <div class="card-body">
                             <h5 class="card-title" style="height: 15%;">${cardInfo.title}</h5>
                             <p class="card-text" style="height: 50%;">${cardInfo.description}</p>
-                            <div class="d-grid gap-2 mx-auto" style="height: 20%;">
-                                <a href="${cardInfo.CAVeViewer}" class="btn btn-primary btn-block">View in CAVeViewer</a>
-                                <a href="${cardInfo.vr_walkthrough}" class="btn btn-primary btn-block">View VR Walkthrough</a>
-                            </div>
+                            <div class="d-grid gap-2 mx-autod-grid align-items-center" style="height: 20%;">
+                                <a href="${cardInfo.CAVeViewer}" class="btn btn-primary btn-block text-center">View in CAVeViewer</a>
+                `
+
+                if(cardInfo.vr_walkthrough != -1)
+                {
+                    card += `<a href="" data-bs-toggle="modal" data-bs-target="#${cardInfo.vr_walkthrough}" class="btn btn-primary btn-block">View VR Walkthrough</a>`
+                }
+
+                card += `</div>
                         </div>
                     </div>
-                `;
+                `
+                
+                if(cardInfo.vr_walkthrough != -1)
+                {
+                    card += `<div class="modal fade" id="${cardInfo.vr_walkthrough}" tabindex="-1" aria-labelledby="${cardInfo.vr_walkthrough}" aria-hidden="true">
+                                <button type="button" class="btn-close fixed-close" data-bs-dismiss="modal" aria-label="Close video"></button>
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0">
+                                            <div class="video-container">
+                                                <iframe src="https://www.youtube.com/embed/${cardInfo.embedded_youtube_link}" 
+                                                        title="YouTube video player" 
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                        allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+                }
+                
+                return card;
             }
+
+            function videoModalLogic(cardInfo) {
+                if(cardInfo.vr_walkthrough != -1)
+                {
+
+                    document.getElementById(cardInfo.vr_walkthrough).addEventListener('hidden.bs.modal', function () {
+                        const iframe = this.querySelector('iframe');
+                        const src = iframe.src;
+                        iframe.src = '';
+                        iframe.src = src;
+                        carousel.cycle();
+                    });
+                }
+            }
+
+            document.addEventListener('show.bs.modal', function () {
+                console.log("entered event");
+                const carouselElem = document.getElementById('carouselCards');
+                carousel = bootstrap.Carousel.getInstance(carouselElem);
+                console.log(carousel);
+                if(!(carousel === null)){
+                    carousel.pause();
+                    // carousel.interval(false);
+                    console.log("Persistent Carousel paused");
+                }
+                else 
+                {
+                    
+                    carousel.pause();
+                    console.log("New Carousel paused");
+                }
+                carousel = new bootstrap.Carousel(carouselElem, {
+                    pause: false
+                });
+                carousel.pause();
+                console.log(carousel);
+            });
 
             // Function to dynamically organize cards based on screen width
             function organizeCarouselItems() {
@@ -244,6 +317,11 @@
                     }
                     indicator.setAttribute('aria-label', `Slide ${i + 1}`);
                     indicatorsContainer.appendChild(indicator);
+                }
+
+                for (let cardIndex = 0; cardIndex < cardData.length; cardIndex++)
+                {
+                    videoModalLogic(cardData[cardIndex]);
                 }
             }
 
