@@ -11,14 +11,14 @@ function Model() {
 
 export function Gltfmesh() {
     return (
-      <Canvas camera={{ near: 0.1, far: 10000.0, position: (0, 0, 1000) }}>
+      <Canvas camera={{ near: 0.1, far: 10000.0, position: (0, 0, 95) }}>
         <ambientLight intensity={30} />
         <directionalLight position={[10, 10, 10]} intensity={15} />
         <directionalLight position={[-10, -10, -10]} intensity={15} />
         <Suspense fallback={null}>
           <Model />
         </Suspense>
-        <OrbitControls position0={[0, 0, 1000]} minDistance={1000} maxDistance={1000} autoRotate autoRotateSpeed={1.5} />
+        <OrbitControls position0={[0, 0, 95]} minDistance={95} maxDistance={95} autoRotate autoRotateSpeed={1.5} />
       </Canvas>
     );
   }

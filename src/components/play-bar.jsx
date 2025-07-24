@@ -7,10 +7,10 @@ export function PlayBar() {
     return (
         <section>
             <div class="playControlBar" id="playControlBar">
-                <button id="playBtn">
+                <button class="playBtn" id="playBtn">
                     <img src="/images/playbtn.png" class="playpausebtn" />
                 </button>
-                <input type="range" min="0" max="1001" value="0" id="playSlider" />
+                <input type="range" min="0" max="1001" value="0" class="playSlider" id="playSlider" />
             </div>
         </section>
     );
