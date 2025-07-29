@@ -1,0 +1,10 @@
+[host]
+name = "caveviewer"
+domain = "caverobotics.com"
+
+[source]
+branch = "main"
+
+[deploy]
+build_command = "npm run build"
+publish_directory = "dist"
