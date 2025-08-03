@@ -1,6 +1,7 @@
 [host]
 name = "caveviewer"
 domain = "caverobotics.com"
+email = "tyler.hansen028@gmail.com"
 
 [source]
 branch = "main"
