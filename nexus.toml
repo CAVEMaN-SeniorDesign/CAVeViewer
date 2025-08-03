@@ -1,6 +1,6 @@
 [host]
 name = "caveviewer"
-domain = "caverobotics.com"
+domain = "caverobotics.ddns.net"
 email = "tyler.hansen028@gmail.com"
 
 [source]
