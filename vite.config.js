@@ -23,4 +23,14 @@ export default defineConfig({
       },
     },
   },
-})
+  server: {
+    cors: true,
+    // proxy: {
+    //   '/3d-assets': {
+    //     target: 'https://caverobotics.ddns.net/3d-assets',
+    //     changeOrigin: true,
+    //     secure: true,
+    //   },
+    // },
+  },
+});
