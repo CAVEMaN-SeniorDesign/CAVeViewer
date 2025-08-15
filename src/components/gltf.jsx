@@ -5,7 +5,7 @@ import { Html, useProgress } from '@react-three/drei';
 
 function Model() {
     // Use the useGLTF hook to load your model
-    const { scene } = useGLTF("3d-assets/buddy.glb"); // Replace with your model's path
+    const { scene } = useGLTF("3d-assets/buddyfull.compressed.glb"); // Replace with your model's path
     // const { scene } = useGLTF("https://threejs.org/examples/models/gltf/kira.glb");
     return <primitive object={scene} frustumCulled={false} rotation={[0, 0, Math.PI]} />;
 }
@@ -30,14 +30,14 @@ function Loader() {
 
 export function Gltfmesh() {
     return (
-      <Canvas camera={{ near: 0.1, far: 10000.0, position: (0, 0, 95) }}>
+      <Canvas camera={{ near: 0.1, far: 10000.0, position: (0, 0, 1000) }}>
         <ambientLight intensity={30} />
         <directionalLight position={[10, 10, 10]} intensity={15} />
         <directionalLight position={[-10, -10, -10]} intensity={15} />
         <Suspense min-width="100%" fallback={<Loader />}>
           <Model />
         </Suspense>
-        <OrbitControls position0={[0, 0, 95]} minDistance={95} maxDistance={95} autoRotate autoRotateSpeed={1.5} />
+        <OrbitControls position0={[0, 0, 1000]} minDistance={850} maxDistance={1000} autoRotate autoRotateSpeed={1.5} />
       </Canvas>
     );
   }
