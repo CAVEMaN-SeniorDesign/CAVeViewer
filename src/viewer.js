@@ -333,7 +333,12 @@ export class Viewer {
 
 					resolve(gltf);
 				},
-				undefined,
+				function ( xhr ) {
+					// console.log(xhr.total);
+					// console.log(xhr.loaded);
+					// console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+			
+				},
 				reject,
 			);
 		});
