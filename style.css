@@ -176,6 +176,10 @@ nav, .offcanvassection {
   text-align: center;
 }
 
+div:has(> div.testparentaccess) {
+  width: 100%;
+}
+
 /********
   Play Control Bar
 */
