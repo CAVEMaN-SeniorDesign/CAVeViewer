@@ -72,6 +72,7 @@ class App {
 					const loadingDiv = document.getElementById("progress-container");
 					if (loadingDiv) {
 						loadingDiv.setAttribute('hidden', '');
+						clearInterval(intervalId);
 					}
 				})
 			})
@@ -161,6 +162,7 @@ const appContentEl = document.getElementById('app-content');
 
 // Add components to the app content container
 appContentEl.innerHTML += ProgressContainer();
+periodic_progress_update = true;
 appContentEl.innerHTML += Main();
 
 if (playBarEnable) {
