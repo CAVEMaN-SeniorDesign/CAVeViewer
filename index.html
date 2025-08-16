@@ -237,4 +237,30 @@
 			</div>
 		</div>
 	</div>
+	<button id="scrollupbtn" class="scroll-up-btn btn btn-secondary">
+		<i class="arrow-up"></i>
+	</button>
+	<script>
+
+		document.addEventListener('DOMContentLoaded', () => {
+			// document.addEventListener('touchstart', onTouchStart, {passive: true});
+			const topbtn = document.getElementById("scrollupbtn");
+			console.log(topbtn);
+			topbtn.addEventListener("click", () => {
+				window.scrollTo(0,0);
+			});
+
+			window.addEventListener("scroll", () => {
+				if(window.scrollY > 125) {
+					topbtn.style.display = "flex";
+				}
+				else
+				{
+					topbtn.style.display = "none";
+				}
+			})
+			
+		});
+		
+	</script>
 </body>
