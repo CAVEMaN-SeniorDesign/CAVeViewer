@@ -478,6 +478,19 @@ footer .separator {
    .modal-dialog {
     max-width: 800px;
 }
+
+  .modal-open {
+    padding-right: 0px !important;
+  }
+
+  .modal {
+    padding-right: 0px !important;
+  }
+
+  .navbar-toggler {
+    margin-right: 0px !important;
+  }
+
 .modal-content {
     background: transparent;
     border: none;
@@ -654,4 +667,53 @@ footer .separator {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.person-card {
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.company-logo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #404040;
+}
+
+.person-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.person-job {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  margin-bottom: 6px;
+}
+
+.person-company {
+  font-size: 1rem;
+  color: #808080;
+  font-style: italic;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .person-card .row > div:first-child {
+      margin-bottom: 20px;
+  }
 }
