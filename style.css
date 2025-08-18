@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 0; /* This forces the flex item to respect flex-grow */
+  height: calc(100vh - 77px); /* This forces the flex item to respect flex-grow */
   background-color: #191919;
 }
 
@@ -416,6 +416,91 @@ footer .separator {
     transform: scale(1.0);
     opacity: 0;
   }
+}
+
+.card {
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+background-color: #053163;
+color: #FFF;
+align-self: center;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+.carousel-control-prev, 
+.carousel-control-next {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.innercarouselmaps {
+  padding: 1rem 0;
+  height: 75vh;
+}
+.card-title {
+  font-weight: 600;
+}
+.btn-primary {
+  border: none;
+}
+
+.cvbtn {
+  background-color: black;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+.carousel-indicators {
+  position: relative;
+}
+.carousel-indicators [data-bs-target] {
+  background-color: #555;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+#carouselCards {
+  margin-bottom: 50px;
+  height: 100%;
+}
+
+.card-text {
+  margin: 5px 0px 0px !important;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mapscontainer {
+  height: calc(100vh - 77px);
+}
+
+.mapscardbody {
+  height: calc(70vh - 180px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mapviewbtns {
+  position: absolute;
+  bottom: 35px;
+  left: 3%;
+  width: 95%;
 }
 
 /******************************************************************************
@@ -847,7 +932,6 @@ footer .separator {
 }
 
 .cta-button {
-  background: #007bff;
   border: none;
   padding: 15px 35px;
   font-size: 1.1rem;
@@ -857,13 +941,6 @@ footer .separator {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.cta-button:hover {
-  background: #0056b3;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
-  color: white;
 }
 
 /* Zoom Modal Styles */
