@@ -717,3 +717,272 @@ footer .separator {
       margin-bottom: 20px;
   }
 }
+
+.postherosection {
+  height: 20px;
+  color: black;
+  border-color: black;
+  background-color: black;
+}
+
+.hero-section {
+  background: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.hero-section-container {
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+}
+
+.carousel-container {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  background: #2d2d2d;
+  border: 1px solid #404040;
+}
+
+.main-carousel-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.main-carousel-item img {
+  width: 100%;
+  /* height: 500px; */
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.thumbnail-container {
+  padding: 15px;
+  background: #2d2d2d;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  border-top: 1px solid #404040;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  opacity: 0.6;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  border-color: #555;
+}
+
+.thumbnail.active {
+  border-color: #007bff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.content-section {
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.content-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: #ffffff;
+}
+
+.content-section h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  color: #b0b0b0;
+}
+
+.bullet-point {
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #d0d0d0;
+  align-self: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.bullet-point i {
+  color: #007bff;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.cavemanicon {
+  background-image: url("/public/images/CAVEMAN_Logo_Gray_Transparent.png");
+  width: 35px;
+  height: 35px;
+  background-size: contain;
+  display: inline-block;
+  position: relative;
+  bottom: -10px;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 2rem 0;
+  opacity: 0.85;
+  color: #c0c0c0;
+}
+
+.cta-button {
+  background: #007bff;
+  border: none;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+  color: white;
+}
+
+/* Zoom Modal Styles */
+.zoom-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.95);
+}
+
+.zoom-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom-content {
+  max-width: 90%;
+  max-height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  /* overflow: hidden; */
+}
+
+.zoomedImage {
+  max-width: 85%;
+  border-radius: 10px;
+  border: 2px solid #404040;
+}
+
+.close-zoom {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #e0e0e0;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-zoom:hover {
+  color: #007bff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-section {
+      padding: 30px 0;
+  }
+  
+  .content-section h1 {
+      font-size: 2.5rem;
+  }
+  
+  .content-section h2 {
+      font-size: 1.3rem;
+  }
+  
+  .main-carousel-item img {
+      height: 300px;
+  }
+  
+  .thumbnail {
+      width: 60px;
+      height: 45px;
+  }
+  
+  .bullet-point {
+      font-size: 1rem;
+  }
+  
+  .description {
+      font-size: 1rem;
+  }
+  
+  .zoom-content {
+      max-width: 95%;
+      max-height: 85%;
+  }
+  
+  .close-zoom {
+      font-size: 30px;
+      top: 15px;
+      right: 20px;
+  }
+  
+  /* Disable hover zoom on mobile for better touch experience */
+  .zoom-lens,
+  .zoom-result {
+      display: none !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .zoom-result {
+      right: -350px;
+      width: 300px;
+      height: 300px;
+  }
+  
+  .zoom-lens {
+      width: 100px;
+      height: 100px;
+  }
+}
