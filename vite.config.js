@@ -20,6 +20,8 @@ export default defineConfig({
         Floor4Benedum: resolve(__dirname, 'maps/Floor4Benedum/index.html'),
         Floor4BenedumLE: resolve(__dirname, 'maps/Floor4BenedumLE/index.html'),
         Floor4BenedumLEmeh: resolve(__dirname, 'maps/Floor4BenedumLEmeh/index.html'),
+        contact: resolve(__dirname, 'contact/index.html'),
+        process: resolve(__dirname, 'process/index.html'),
       },
     },
   },
