@@ -204,13 +204,71 @@
 
 	<hr class="postherosection">
 
-	<div class="container-fluid p-4" id="learningmore">
+	<section class="hazard-section text-white my-4" id="learningmore">
+        <div class="container-fluid h-100">
+            <div class="row h-100 align-items-center">
+                <!-- Image Section - Left on desktop, Top on mobile -->
+                <div class="col-lg-6 col-12 order-1 order-lg-1 mb-4 mb-lg-0">
+                    <div class="image-container position-relative text-center">
+                        <!-- Base image placeholder -->
+                        <div class="rounded-3 mx-auto d-flex align-items-center justify-content-center" style="width: 100%; max-width: 600px; height: 600px;">
+                            <img src="images/cave1.jpg" 
+                         		alt="Cave Hazard Image">
+                        </div>
+                        
+                        <!-- Flashing hazard sign overlay -->
+                        <div class="position-absolute top-50 start-50 translate-middle hazard-flash">
+                            <!-- Hazard Sign Emoji -->
+                            <div style="font-size: 16rem;">⚠️</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Text Section - Right on desktop, Bottom on mobile -->
+                <div class="col-lg-6 col-12 order-2 order-lg-2">
+					<div class="text-content px-lg-3 px-1 mx-auto text-center">
+						<!-- First large line -->
+						<div class="container-fluid p-3" id="learningmore">
+							<div class="row align-items-center justify-content-center mx-auto">
+								<div class="col-12">
+									<div class="cave-warning-container d-flex py-4 text-center mx-auto">
+										<div class="d-flex align-items-center mx-auto">
+											<div class="row align-items-center justify-content-center mx-auto">
+												<div class="col-auto">
+													<span style="white-space: nowrap;">Caves are&nbsp;</span>
+												</div>
+												<div class="col-auto">
+													<div class="animated-word-container d-flex align-items-center justify-content-center">
+														<span class="animated-word">dangerous</span>
+														<span class="animated-word">unlit</span>
+														<span class="animated-word">unstable</span>
+														<span class="animated-word">unpredictable</span>
+														<span class="animated-word">treacherous</span>
+														<span class="animated-word">unexplored</span>
+														<span class="animated-word">unmapped</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        
+                        <!-- Second large line -->
+						<h1 class="title"><b>We want to keep people out of danger!</b></h1>
+                        <h1 class="title">We want to explore and map caves!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<!-- <div class="container-fluid p-4" id="learningmore">
         <div class="row justify-content-center">
 			<div class="col-lg-9 col-md-11 col-12">
                 <div class="cave-warning-container py-4 px-2 text-center text-dark">
                     <div class="d-flex align-items-center justify-content-between">
-                        <div class="hazard-sign me-3">⚠️</div>
-                        
                         <div class="text-container d-flex align-items-center">
                             <span style="white-space: nowrap;">Caves are&nbsp;</span>
                             <div class="animated-word-container d-flex align-items-center justify-content-center">
@@ -223,55 +281,13 @@
 								<span class="animated-word">unmapped</span>
                             </div>
                         </div>
-                        
-                        <div class="hazard-sign ms-3">⚠️</div>
                     </div>
                 </div>
 			</div>
         </div>
-    </div>
-
-	<div class="container-fluid">
-        <div class="row image-row align-items-center justify-content-center mx-auto" style="max-width: 1200px;">
-            <!-- Left Image - Hidden on mobile -->
-            <div class="col-2 d-none d-md-block text-center">
-                <div class="image-container">
-                    <img src="images/cave1.jpg" 
-                         alt="Left placeholder image">
-                </div>
-            </div>
-            
-            <!-- Center Image - Always visible, larger -->
-            <div class="col-10 col-md-6 offset-md-0">
-                <div class="image-container">
-                    <img src="images/cave2.jpg" 
-                         alt="Center placeholder image">
-                </div>
-            </div>
-            
-            <!-- Right Image - Hidden on mobile -->
-            <div class="col-2 d-none d-md-block text-center">
-                <div class="image-container">
-                    <img src="images/cave3.jpg" 
-                         alt="Right placeholder image">
-                </div>
-            </div>
-        </div>
-    </div>
+    </div> -->
 	
 	<div class="container-xs">
-		<div class="row">
-			<div class="col-xl-8 mx-auto mt-4 mb-5 text-center">
-				<div class="section-title">
-					<br>
-					<br>
-					<h1 class="title">We want to explore and map caves!</h1>
-					<h1 class="title"><b>We want to keep people out of danger!</b></h1>
-					<br>
-					<br>
-				</div>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-xl-8 mx-auto text-center">
 				<div class="section-title">
@@ -309,6 +325,29 @@
 			<div class="col-md-5 mx-auto">
 				<div class="canvassquareparent">
 					<div class="canvassquare" id="buddycanvas"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-8 mx-auto mt-1 text-center">
+				<div class="section-title">
+					<br>
+					<h1 class="title">Check out the Maps Buddy Created:</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-8 mx-auto mb-5 mt-4 text-center">
+				<div class="section-title">
+					<div class="container">
+						<div class="row row-cols-lg-12">
+							<div class="col my-1">
+								<a href="/maps/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Generated Maps</button></a>
+							</div>
+						</div>
+						<br>
+						<br>
+					</div>
 				</div>
 			</div>
 		</div>
