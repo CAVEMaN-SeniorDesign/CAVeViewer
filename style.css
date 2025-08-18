@@ -1076,3 +1076,133 @@ align-self: center;
 .hazard-section {
   min-height: 80vh;
 }
+
+.team-member {
+  background-color: #2d2d2d;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 250px;
+}
+
+/* Ensure gaps between cards at all screen sizes */
+/* .row.g-4 > * {
+  margin-right: 1.25rem !important;
+  margin-left: 1.25rem !important;
+} */
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  transition: border-color 0.3s ease;
+}
+
+.social-icons {
+  gap: 15px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  background-color: #3d3d3d;
+  border: 2px solid #555;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.social-icon.linkedin:hover {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.social-icon.github:hover {
+  background-color: #333;
+  border-color: #666;
+}
+
+.social-icon.website:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.member-name {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.member-title {
+  color: #007bff;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.member-email {
+  color: #cccccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.section-title {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  /* background-color: #007bff; */
+}
+
+@media (max-width: 767px) {
+  .team-member {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      min-width: auto;
+  }
+  
+  .profile-img {
+      width: 120px;
+      height: 120px;
+  }
+}
+
+/* Force icon stacking only when card width is very constrained */
+@media (max-width: 350px) {
+  .team-member {
+      min-width: auto;
+      padding: 1rem;
+  }
+  
+  .social-icons {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+}
