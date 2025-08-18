@@ -7,70 +7,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet" />
-    <style>
-		body {
-			background-color: #191919;
-			color: #FFF;
-		}
-
-        .card {
-            margin: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			background-color: #053163;
-			color: #FFF;
-			align-self: center;
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card-img-top {
-            height: 180px;
-            object-fit: cover;
-        }
-        .carousel-control-prev, 
-        .carousel-control-next {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .carousel-inner {
-            padding: 1rem 0;
-        }
-        .card-title {
-            font-weight: 600;
-        }
-        .btn-primary {
-            background-color: #000;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #0b5ed7;
-        }
-        .carousel-indicators {
-            position: relative;
-            margin-top: 20px;
-        }
-        .carousel-indicators [data-bs-target] {
-            background-color: #555;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        #carouselCards {
-            margin-bottom: 50px;
-        }
-    </style>
 </head>
 <body>
-    <main>
         <div id="headerroot"></div>
-        <div class="container py-4">            
+        <div class="container py-4 mapscontainer">            
             <div id="carouselCards" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
-                <div class="carousel-inner">
+                <div class="carousel-inner innercarouselmaps">
                     <!-- Dynamic slides will be inserted here by JavaScript -->
                 </div>
                 
@@ -116,7 +58,7 @@
                     title: "Enlow Tunnel - Less Textured",
                     image: "/images/thumbnail_cave.png",
                     alt: "Enlow Tunnel Lesser Textured Map",
-                    description: "Enlow Tunnel on the Montour Trail mapped by the CAVEMAN Rover! This map has less textures due to different mapping pipeline configurations.",
+                    description: "Enlow Tunnel mapped by the CAVEMAN Rover! Less textures due to different mapping configurations.",
                     CAVeViewer: "/maps/TheCave/",
                     vr_walkthrough: "enlowlt",
                     embedded_youtube_link: "UD9cPdoDOaY?si=nA1VZGz2keK51rNV"
@@ -188,18 +130,18 @@
             // Function to create a card element
             function createCard(cardInfo) {
                 let card = `
-                    <div class="card overflow-auto" style="width: 18rem; height: 60vh; justify-content: center; align-items: center; text-align: center;">
+                    <div class="card overflow-auto" style="width: 18rem; height: 70vh; justify-content: center; align-items: center; text-align: center;">
                         <img src="${cardInfo.image}" class="card-img-top" alt="${cardInfo.alt}">
-                        <div class="card-body">
-                            <h5 class="card-title" style="height: 15%;">${cardInfo.title}</h5>
-                            <p class="card-text" style="height: 50%;">${cardInfo.description}</p>
-                            <div class="d-grid gap-2 mx-autod-grid align-items-center" style="height: 20%;">
-                                <a href="${cardInfo.CAVeViewer}" class="btn btn-primary btn-block text-center">View in CAVeViewer</a>
+                        <div class="card-body mapscardbody">
+                            <h5 class="card-title" style="height: 20%;">${cardInfo.title}</h5>
+                            <p class="card-text" style="height: auto; overflow-y: scrolls;">${cardInfo.description}</p>
+                            <div class="d-grid gap-2 mx-autod-grid align-items-center mapviewbtns" style="height: 20%;">
+                                <a href="${cardInfo.CAVeViewer}" class="btn btn-primary cvbtn btn-block text-center">View in CAVeViewer</a>
                 `
 
                 if(cardInfo.vr_walkthrough != -1)
                 {
-                    card += `<a href="" data-bs-toggle="modal" data-bs-target="#${cardInfo.vr_walkthrough}" class="btn btn-primary btn-block">View VR Walkthrough</a>`
+                    card += `<a href="" data-bs-toggle="modal" data-bs-target="#${cardInfo.vr_walkthrough}" class="btn btn-primary cvbtn btn-block">View VR Walkthrough</a>`
                 }
 
                 card += `</div>
@@ -326,6 +268,6 @@
             // Run when window is resized
             window.addEventListener('resize', organizeCarouselItems);
         </script>
-    </main>
+
 </body>
 </html>

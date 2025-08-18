@@ -8,16 +8,12 @@
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<!-- <link rel="stylesheet" href="style.css" /> -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet" />
 	<script>
 		const glb_filepath = "/3d-assets/buddy.glb";
-		const start_pos = [-1, -1, -1];
-		const end_pos = [0, 0, 0];
-		const look_at_vec = [0, 0, 0];
-		const showControls = false;
-		const autoRotateModel = true;
-		const playBarEnable = false;
 	</script>
 	<script defer type="module" src="src/homepage.jsx"></script>
 </head>
@@ -45,7 +41,7 @@
         function displaySpeed() {
             let timeDuration = (end_time - time_start) / 1000;
             bytesps = (downloadSize / timeDuration).toFixed(2);
-			console.log(bytesps);
+			// console.log(bytesps);
         }
 
 
@@ -61,21 +57,21 @@
 					{
 						firstload = false;
 						start_time = new Date().getTime();
-						console.log("start_time: %f", start_time);
+						// console.log("start_time: %f", start_time);
 					}
 					const totalBytes = 6027704;
 					
 					const curr_time = new Date().getTime();
-					console.log("curr_time: %f", curr_time);
-					console.log("start_time: %f", start_time);
+					// console.log("curr_time: %f", curr_time);
+					// console.log("start_time: %f", start_time);
 					const time_diff = (curr_time - start_time)/1000;
-					console.log("time_diff: %f", time_diff);
+					// console.log("time_diff: %f", time_diff);
 
 					const estBytesDownLoad = time_diff * bytesps;
-					console.log("Estimated Bytes Downloaded: %f", estBytesDownLoad);
+					// console.log("Estimated Bytes Downloaded: %f", estBytesDownLoad);
 
 					const newProgress = Math.round(500 * estBytesDownLoad / totalBytes);
-					console.log("Progress percent: %d", newProgress);
+					// console.log("Progress percent: %d", newProgress);
 					
 					let progress = newProgress > 95 ? 95 : newProgress;
 					document.getElementById("buddyprogressbar").style.width = progress + "%";
@@ -93,13 +89,186 @@
 		intervalId = setInterval(fetchDataAndUpdateUI, 500);
     </script>
 	<div id="headerroot"></div>
-	<div class="container-fluid p-4">
+
+	<section class="hero-section">
+        <div class="container px-2">
+            <div class="row align-items-center">
+                <!-- Carousel Column -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="carousel-container">
+                        <!-- Main Carousel -->
+                        <div id="mainCarousel" class="carousel slide" data-bs-interval="-1">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active main-carousel-item">
+                                    <div class="hover-zoom-container">
+                                        <img src="./images/buddyrover.jpg" 
+                                             alt="Buddy the Rover" class="d-block w-100 zoomable-image">
+                                    </div>
+                                </div>
+                                <div class="carousel-item main-carousel-item">
+                                    <div class="hover-zoom-container">
+                                        <img src="./images/DoublePoster_CAVEMAN.jpg" 
+                                             alt="Expo Poster Part 1" class="d-block w-100 zoomable-image">
+                                    </div>
+                                </div>
+                                <div class="carousel-item main-carousel-item">
+                                    <div class="hover-zoom-container">
+                                        <img src="./images/DoublePoster_CAVEMAN2.jpg" 
+                                             alt="Expo Poster Part 2" class="d-block w-100 zoomable-image">
+                                    </div>
+                                </div>
+                                <div class="carousel-item main-carousel-item">
+                                    <div class="hover-zoom-container">
+                                        <img src="./images/team.jpeg" 
+                                             alt="Team Photo After Expo" class="d-block w-100 zoomable-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Thumbnail Navigation -->
+                        <div class="thumbnail-container">
+                            <img src="./images/buddyrover.jpg" 
+                                 alt="Thumbnail 1" class="thumbnail active" data-slide="0">
+                            <img src="./images/DoublePoster_CAVEMAN.jpg" 
+                                 alt="Thumbnail 2" class="thumbnail" data-slide="1">
+                            <img src="./images/DoublePoster_CAVEMAN2.jpg" 
+                                 alt="Thumbnail 3" class="thumbnail" data-slide="2">
+                            <img src="./images/team.jpeg" 
+                                 alt="Thumbnail 4" class="thumbnail" data-slide="3">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Column -->
+                <div class="col-lg-6">
+                    <div class="content-section ps-lg-5">
+                        <h1>CAVEMAN</h1>
+                        <h2>Senior Design Project<br>University of Pittsburgh<br>Spring 2025</h2>
+                        
+                        <div class="bullet-points mb-3 mx-auto">
+                            <div class="bullet-point">
+                                <i class="fas cavemanicon"></i>
+                                <span>Autonomous Cave-Mapping Robot</span>
+                            </div>
+                            <div class="bullet-point">
+                                <i class="cavemanicon"></i>
+                                <span>Custom Chassis, Hardware, & Control</span>
+                            </div>
+                            <div class="bullet-point">
+                                <i class="fas cavemanicon"></i>
+                                <span>13+ Actuators & Sensors</span>
+                            </div>
+                            <div class="bullet-point">
+                                <i class="cavemanicon"></i>
+                                <span>5 People, 3 Months, All from Scratch</span>
+                            </div>
+                        </div>
+                        
+                        <p class="description">
+                            From idea to final product, our team developed this robot over the course of 1 college semester.
+							Utilizing a custom PCB & Embedded Control, ROS2, and Computer Vision, this robot autonomously navigates cave environments. 
+							With tireless development and testing, we integrated all facets of engineering and design to create this functional rover.
+                        </p>
+                        
+                        <div class="row">
+							<div class="col">
+								<a href="#learningmore">
+									<button class="btn btn-primary cta-button">
+										Learn More <i class="fas fa-arrow-right ms-2"></i>
+									</button>
+								</a>
+							</div>
+							<div class="col">
+								<a href="/contact/">
+									<button class="btn btn-primary cta-button">
+										About Us <i class="fas fa-user ms-2"></i>
+									</button>
+								</a>
+							</div>
+						</div>
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Zoom Modal -->
+    <div id="zoomModal" class="zoom-modal">
+        <span class="close-zoom" data-bs-dismiss="zoomModal">&times;</span>
+        <div class="zoom-content">
+            <img id="zoomedImage" class="zoomedImage" src="" alt="Zoomed Image">
+        </div>
+    </div>
+
+	<hr class="postherosection">
+
+	<section class="hazard-section text-white my-4" id="learningmore">
+        <div class="container-fluid h-100">
+            <div class="row h-100 align-items-center">
+                <!-- Image Section - Left on desktop, Top on mobile -->
+                <div class="col-lg-6 col-12 order-1 order-lg-1 mb-4 mb-lg-0">
+                    <div class="image-container position-relative text-center">
+                        <!-- Base image placeholder -->
+                        <div class="rounded-3 mx-auto d-flex align-items-center justify-content-center" style="width: 100%; max-width: 600px; height: 600px;">
+                            <img src="images/cave1.jpg" 
+                         		alt="Cave Hazard Image">
+                        </div>
+                        
+                        <!-- Flashing hazard sign overlay -->
+                        <div class="position-absolute top-50 start-50 translate-middle hazard-flash">
+                            <!-- Hazard Sign Emoji -->
+                            <div style="font-size: 16rem;">⚠️</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Text Section - Right on desktop, Bottom on mobile -->
+                <div class="col-lg-6 col-12 order-2 order-lg-2">
+					<div class="text-content px-lg-3 px-1 mx-auto text-center">
+						<!-- First large line -->
+						<div class="container-fluid p-3" id="learningmore">
+							<div class="row align-items-center justify-content-center mx-auto">
+								<div class="col-12">
+									<div class="cave-warning-container d-flex py-4 text-center mx-auto">
+										<div class="d-flex align-items-center mx-auto">
+											<div class="row align-items-center justify-content-center mx-auto">
+												<div class="col-auto">
+													<span style="white-space: nowrap;">Caves are&nbsp;</span>
+												</div>
+												<div class="col-auto">
+													<div class="animated-word-container d-flex align-items-center justify-content-center">
+														<span class="animated-word">dangerous</span>
+														<span class="animated-word">unlit</span>
+														<span class="animated-word">unstable</span>
+														<span class="animated-word">unpredictable</span>
+														<span class="animated-word">treacherous</span>
+														<span class="animated-word">unexplored</span>
+														<span class="animated-word">unmapped</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        
+                        <!-- Second large line -->
+						<h1 class="title"><b>We want to keep people out of danger!</b></h1>
+                        <h1 class="title">We want to explore and map caves!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<!-- <div class="container-fluid p-4" id="learningmore">
         <div class="row justify-content-center">
 			<div class="col-lg-9 col-md-11 col-12">
                 <div class="cave-warning-container py-4 px-2 text-center text-dark">
                     <div class="d-flex align-items-center justify-content-between">
-                        <div class="hazard-sign me-3">⚠️</div>
-                        
                         <div class="text-container d-flex align-items-center">
                             <span style="white-space: nowrap;">Caves are&nbsp;</span>
                             <div class="animated-word-container d-flex align-items-center justify-content-center">
@@ -112,55 +281,13 @@
 								<span class="animated-word">unmapped</span>
                             </div>
                         </div>
-                        
-                        <div class="hazard-sign ms-3">⚠️</div>
                     </div>
                 </div>
 			</div>
         </div>
-    </div>
-
-	<div class="container-fluid">
-        <div class="row image-row align-items-center justify-content-center mx-auto" style="max-width: 1200px;">
-            <!-- Left Image - Hidden on mobile -->
-            <div class="col-2 d-none d-md-block text-center">
-                <div class="image-container">
-                    <img src="images/cave1.jpg" 
-                         alt="Left placeholder image">
-                </div>
-            </div>
-            
-            <!-- Center Image - Always visible, larger -->
-            <div class="col-10 col-md-6 offset-md-0">
-                <div class="image-container">
-                    <img src="images/cave2.jpg" 
-                         alt="Center placeholder image">
-                </div>
-            </div>
-            
-            <!-- Right Image - Hidden on mobile -->
-            <div class="col-2 d-none d-md-block text-center">
-                <div class="image-container">
-                    <img src="images/cave3.jpg" 
-                         alt="Right placeholder image">
-                </div>
-            </div>
-        </div>
-    </div>
+    </div> -->
 	
 	<div class="container-xs">
-		<div class="row">
-			<div class="col-xl-8 mx-auto mt-4 mb-5 text-center">
-				<div class="section-title">
-					<br>
-					<br>
-					<h1 class="title">We want to explore and map caves!</h1>
-					<h1 class="title"><b>We want to keep people out of danger!</b></h1>
-					<br>
-					<br>
-				</div>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-xl-8 mx-auto text-center">
 				<div class="section-title">
@@ -205,6 +332,29 @@
 			<div class="col-xl-8 mx-auto mt-1 text-center">
 				<div class="section-title">
 					<br>
+					<h1 class="title">Check out the Maps Buddy Created:</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-8 mx-auto mb-5 mt-4 text-center">
+				<div class="section-title">
+					<div class="container">
+						<div class="row row-cols-lg-12">
+							<div class="col my-1">
+								<a href="/maps/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Generated Maps</button></a>
+							</div>
+						</div>
+						<br>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-8 mx-auto mt-1 text-center">
+				<div class="section-title">
+					<br>
 					<h1 class="title">Learn more about our process!</h1>
 				</div>
 			</div>
@@ -236,5 +386,191 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-xl-8 mx-auto mt-1 text-center">
+				<div class="section-title">
+					<br>
+					<h1 class="title">Special Thanks to:</h1>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<div class="container mt-4 px-5">
+        <div class="person-card px-md-3">
+            <div class="row">
+                <div class="col-12 col-md-8 info-section">
+                    <div class="person-name">Dr. Samuel Dickerson</div>
+                    <div class="person-job">Vice Chair, ECE Department</div>
+                    <div class="person-company">University of Pittsburgh</div>
+                </div>
+                <div class="col-8 col-md-4 mx-auto">
+                    <img src="./images/pittlogo.svg" 
+                         alt="Company Logo" 
+                         class="company-logo">
+                </div>
+            </div>
+        </div>
+
+		<div class="person-card">
+            <div class="row">
+                <div class="col-12 col-md-8 info-section">
+                    <div class="person-name">Matthew Dudik</div>
+                    <div class="person-job">VP of Perception Products</div>
+                    <div class="person-company">Carnegie Robotics Laboratory</div>
+                </div>
+                <div class="col-8 col-md-4 mx-auto">
+                    <img src="./images/crllogo.png" 
+                         alt="Company Logo" 
+                         class="company-logo">
+                </div>
+            </div>
+        </div>
+
+		<div class="person-card">
+            <div class="row">
+                <div class="col-12 col-md-8 info-section">
+                    <div class="person-name">Matthew Csencsits</div>
+                    <div class="person-job">Principal Robotics Software Engineer</div>
+                    <div class="person-company">Tech Solutions Inc.</div>
+                </div>
+                <div class="col-8 col-md-4 mx-auto">
+                    <img src="./images/mvslogo.jpg" 
+                         alt="Company Logo" 
+                         class="company-logo">
+                </div>
+            </div>
+        </div>
+
+		<div class="person-card">
+            <div class="row">
+                <div class="col-12 col-md-8 info-section">
+                    <div class="person-name">Dr. Anthony Iannacchione</div>
+                    <div class="person-job">Associate Professor Emeritus of Civil/Environmental Engineering</div>
+                    <div class="person-company">University of Pittsburgh</div>
+                </div>
+                <div class="col-8 col-md-4 mx-auto">
+                    <img src="./images/pittlogo.svg" 
+                         alt="Company Logo" 
+                         class="company-logo">
+                </div>
+            </div>
+        </div>
+
+		<div class="person-card">
+            <div class="row">
+                <div class="col-12 col-md-8 info-section">
+                    <div class="person-name">Dr. Joseph Samosky</div>
+                    <div class="person-job">Associate Professor Emeritus of Bioengineering</div>
+                    <div class="person-company">University of Pittsburgh</div>
+                </div>
+                <div class="col-8 col-md-4 mx-auto">
+                    <img src="./images/pittlogo.svg" 
+                         alt="Company Logo" 
+                         class="company-logo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<button id="scrollupbtn" class="scroll-up-btn btn btn-secondary">
+		<i class="arrow-up"></i>
+	</button>
+	<script>
+
+		document.addEventListener('DOMContentLoaded', () => {
+			// document.addEventListener('touchstart', onTouchStart, {passive: true});
+			const topbtn = document.getElementById("scrollupbtn");
+			// console.log(topbtn);
+			topbtn.addEventListener("click", () => {
+				window.scrollTo(0,0);
+			});
+
+			window.addEventListener("scroll", () => {
+				if(window.scrollY > 125) {
+					topbtn.style.display = "flex";
+				}
+				else
+				{
+					topbtn.style.display = "none";
+				}
+			})
+
+			const carousel = document.getElementById('mainCarousel');
+            const bsCarousel = new bootstrap.Carousel(carousel);
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const zoomModal = document.getElementById('zoomModal');
+            const zoomedImage = document.getElementById('zoomedImage');
+            const closeZoom = document.querySelector('.close-zoom');
+            const zoomableImages = document.querySelectorAll('.zoomable-image');
+            const hoverZoomContainers = document.querySelectorAll('.hover-zoom-container');
+			bsCarousel.pause();
+            
+            // Thumbnail click handlers
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', function() {
+                    // Update active thumbnail
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Go to corresponding slide
+                    bsCarousel.to(index);
+                });
+            });
+            
+            
+            // Full screen zoom functionality
+            zoomableImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    zoomedImage.src = this.src;
+                    zoomModal.classList.add('show');
+                    
+                    // Pause carousel
+                    bsCarousel.pause();
+
+					// resize zoomed image to fit
+					let windowAspectRatio = window.innerHeight / window.innerWidth;
+					let pictureAspectRatio = zoomedImage.naturalHeight / zoomedImage.naturalWidth;
+					if(windowAspectRatio < pictureAspectRatio)
+					{
+						// console.log("WAR: " + windowAspectRatio);
+						// console.log("PAR: " + pictureAspectRatio);
+						zoomedImage.style.maxWidth = Math.round(100 * windowAspectRatio / pictureAspectRatio) + '%';
+
+					}
+                    
+                    // Disable body scroll
+                    document.body.style.overflow = 'hidden';
+					document.body.style.position = 'fixed';
+                });
+            });
+            
+            // Close zoom modal
+            function closeZoomModal() {
+                zoomModal.classList.remove('show');
+                
+                // Re-enable body scroll
+                document.body.style.overflow = '';
+				document.body.style.position = '';
+            }
+
+			closeZoom.addEventListener('click', closeZoomModal);
+                    
+            // Close on modal background click
+            zoomModal.addEventListener('click', function(e) {
+                if (e.target === zoomModal) {
+                    closeZoomModal();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && zoomModal.classList.contains('show')) {
+                    closeZoomModal();
+                }
+            });
+			
+		});
+		
+	</script>
 </body>
