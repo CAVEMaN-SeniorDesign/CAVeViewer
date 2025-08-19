@@ -1206,3 +1206,12 @@ align-self: center;
       gap: 10px;
   }
 }
+
+.headerdropdown > div.dropdown-menu {
+  background-color: #053163;
+  border: none;
+}
+
+.navitemhover:hover {
+  background-color: #07203d;
+}
