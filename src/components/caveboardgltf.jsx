@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Center, OrbitControls, useGLTF } from '@react-three/drei';
 import { Html, useProgress } from '@react-three/drei';
 
 function Model() {
     // Use the useGLTF hook to load your model
-    const { scene } = useGLTF("3d-assets/buddyfull.compressed.glb"); // Replace with your model's path
+    const { scene } = useGLTF("/3d-assets/caveboard.compressed.glb"); // Replace with your model's path
     // const { scene } = useGLTF("https://threejs.org/examples/models/gltf/kira.glb");
     return <primitive object={scene} frustumCulled={false} rotation={[0, 0, Math.PI]} />;
 }
@@ -28,16 +28,18 @@ function Loader() {
 }
 
 
-export function Gltfmesh() {
+export function Pcbmesh() {
     return (
-      <Canvas camera={{ near: 0.1, far: 10000.0, position: (0, 0, 1000) }}>
+      <Canvas camera={{ near: 0.1, far: 1000.0 }}>
         <ambientLight intensity={30} />
         <directionalLight position={[10, 10, 10]} intensity={15} />
         <directionalLight position={[-10, -10, -10]} intensity={15} />
         <Suspense min-width="100%" fallback={<Loader />}>
-          <Model />
+          <Center>
+            <Model />
+          </Center>
         </Suspense>
-        <OrbitControls position0={[0, 0, 1000]} minDistance={850} maxDistance={1000} autoRotate autoRotateSpeed={1.5} />
+        <OrbitControls position0={[0, 0, 0]} minDistance={325} maxDistance={400} autoRotate autoRotateSpeed={1.5} />
       </Canvas>
     );
   }

@@ -6,10 +6,7 @@
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Gltfmesh } from "./components/buddygltf.jsx";
-import { Header } from './components/header.jsx';
-
-const header = createRoot(document.getElementById("headerroot"));
-header.render(<Header params={{page_title: 'CAVEMAN'}}/>);
+import { Pcbmesh } from "./components/caveboardgltf.jsx";
 
 
 const root = createRoot(document.getElementById("buddycanvas"));
@@ -18,3 +15,10 @@ root.render(
     <Gltfmesh />
   </StrictMode>
 );
+
+const pcb = createRoot(document.getElementById("caveboardcanvas"));
+pcb.render(
+  <StrictMode>
+    <Pcbmesh />
+  </StrictMode>
+)
