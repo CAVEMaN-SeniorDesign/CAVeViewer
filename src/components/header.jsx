@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export function Header({params}) {
@@ -30,10 +31,7 @@ export function Header({params}) {
                 <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
                     <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/mechdesign/">Mechanical Design</Nav.Link>
-                    <Nav.Link href="/hw/">Hardware</Nav.Link>
-                    <Nav.Link href="/embedded/">Low Level Control</Nav.Link>
-                    <Nav.Link href="/ros/">High Level Navigation</Nav.Link>
+                    <Nav.Link href="/process/">Design Process</Nav.Link>
                     <Nav.Link href="/maps/">Maps</Nav.Link>
                     <Nav.Link href="/contact/">Contact</Nav.Link>
                     </Nav>

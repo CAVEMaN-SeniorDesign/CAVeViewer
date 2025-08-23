@@ -20,8 +20,7 @@
 
 <body>
 	<script type="text/javascript">
-        let userImageLink =
-"/images/buddyfallback.png";
+        let userImageLink = "/images/buddyfallback.png";
         let time_start, end_time, bytesps;
 		let periodic_progress_update = false;
 		let firstload = true;
@@ -59,7 +58,7 @@
 						start_time = new Date().getTime();
 						// console.log("start_time: %f", start_time);
 					}
-					const totalBytes = 6027704;
+					const totalBytes = 18610460;
 					
 					const curr_time = new Date().getTime();
 					// console.log("curr_time: %f", curr_time);
@@ -211,7 +210,7 @@
         <div class="container-fluid h-100">
             <div class="row h-100 align-items-center">
                 <!-- Image Section - Left on desktop, Top on mobile -->
-                <div class="col-lg-6 col-12 order-1 order-lg-1 mb-4 mb-lg-0">
+                <div class="col-lg-6 col-12 order-2 order-lg-2 mb-4 mb-lg-0">
                     <div class="image-container position-relative text-center">
                         <!-- Base image placeholder -->
                         <div class="rounded-3 mx-auto d-flex align-items-center justify-content-center" style="width: 100%; max-width: 600px; height: 600px;">
@@ -228,7 +227,7 @@
                 </div>
                 
                 <!-- Text Section - Right on desktop, Bottom on mobile -->
-                <div class="col-lg-6 col-12 order-2 order-lg-2">
+                <div class="col-lg-6 col-12 order-1 order-lg-1">
 					<div class="text-content px-lg-3 px-1 mx-auto text-center">
 						<!-- First large line -->
 						<div class="container-fluid p-3" id="learningmore">
@@ -266,29 +265,6 @@
             </div>
         </div>
     </section>
-
-	<!-- <div class="container-fluid p-4" id="learningmore">
-        <div class="row justify-content-center">
-			<div class="col-lg-9 col-md-11 col-12">
-                <div class="cave-warning-container py-4 px-2 text-center text-dark">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="text-container d-flex align-items-center">
-                            <span style="white-space: nowrap;">Caves are&nbsp;</span>
-                            <div class="animated-word-container d-flex align-items-center justify-content-center">
-                                <span class="animated-word">dangerous</span>
-                                <span class="animated-word">unlit</span>
-                                <span class="animated-word">unstable</span>
-                                <span class="animated-word">unpredictable</span>
-                                <span class="animated-word">treacherous</span>
-								<span class="animated-word">unexplored</span>
-								<span class="animated-word">unmapped</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			</div>
-        </div>
-    </div> -->
 	
 	<div class="container-xs">
 		<div class="row">
@@ -368,19 +344,19 @@
 					<div class="container">
 						<div class="row row-cols-lg-5">
 							<div class="col my-1">
-								<a href="/mechdesign/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Mechanical Design</button></a>
+								<a href="/process/#mechdesign"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Mechanical Design</button></a>
 							</div>
 							<div class="col my-1">
-								<a href="/hw/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Hardware</button></a>
+								<a href="/process/#hwdesign"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Hardware</button></a>
 							</div>
 							<div class="col my-1">
-								<a href="/embedded/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Low Level Software</button></a>
+								<a href="/process/#lowlevel"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Low Level Software</button></a>
 							</div>
 							<div class="col my-1">
-								<a href="/ros/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">High Level Control</button></a>
+								<a href="/process/#ros"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">High Level Control</button></a>
 							</div>
 							<div class="col my-1">
-								<a href="/maps/"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Mapping</button></a>
+								<a href="/process/#mapping"><button class="p-3 m-1 btn btn-primary btn-lg w-100 h-100">Mapping</button></a>
 							</div>
 						</div>
 						<br>
@@ -465,6 +441,21 @@
                 <div class="col-12 col-md-8 info-section">
                     <div class="person-name">Dr. Joseph Samosky</div>
                     <div class="person-job">Associate Professor Emeritus of Bioengineering</div>
+                    <div class="person-company">University of Pittsburgh</div>
+                </div>
+                <div class="col-8 col-md-4 mx-auto">
+                    <img src="./images/pittlogo.svg" 
+                         alt="Company Logo" 
+                         class="company-logo">
+                </div>
+            </div>
+        </div>
+
+		<div class="person-card">
+            <div class="row">
+                <div class="col-12 col-md-8 info-section">
+                    <div class="person-name">Dr. Brandon Grainger</div>
+                    <div class="person-job">Co-Director, Pitt Energy GRID Institute & Pitt AMPED</div>
                     <div class="person-company">University of Pittsburgh</div>
                 </div>
                 <div class="col-8 col-md-4 mx-auto">
