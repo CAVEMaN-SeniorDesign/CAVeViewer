@@ -23,6 +23,17 @@ body {
   z-index: 1;
 }
 
+@media (min-width: 992px) {
+  .scrollspy-nav {
+      position: fixed;
+      top: 50%;
+      /* left: 20px; */
+      transform: translateY(-50%);
+      z-index: 1000;
+      max-width: 18%;
+  }
+}
+
 /* Make sure the app content takes up the remaining space */
 #app-content {
   display: flex;
