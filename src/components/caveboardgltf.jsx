@@ -30,7 +30,7 @@ function Loader() {
 
 export function Pcbmesh() {
     return (
-      <Canvas camera={{ near: 0.1, far: 1000.0 }}>
+      <Canvas camera={{ near: 0.1, far: 1000.0, position: (0, 0, 1000) }}>
         <ambientLight intensity={30} />
         <directionalLight position={[10, 10, 10]} intensity={15} />
         <directionalLight position={[-10, -10, -10]} intensity={15} />
@@ -39,7 +39,7 @@ export function Pcbmesh() {
             <Model />
           </Center>
         </Suspense>
-        <OrbitControls position0={[0, 0, 0]} minDistance={325} maxDistance={400} autoRotate autoRotateSpeed={1.5} />
+        <OrbitControls position0={[0, 400, 0]} minDistance={50} maxDistance={400} autoRotate autoRotateSpeed={1.5} />
       </Canvas>
     );
   }

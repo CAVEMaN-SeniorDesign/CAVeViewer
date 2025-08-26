@@ -39,7 +39,7 @@ export function Gltfmesh() {
             <Model />
           </Center>
         </Suspense>
-        <OrbitControls position0={[0, 0, 120]} minDistance={120} maxDistance={120} autoRotate autoRotateSpeed={1.5} />
+        <OrbitControls position0={[0, 0, 120]} minDistance={20} maxDistance={120} autoRotate autoRotateSpeed={1.5} enablePan={false} />
       </Canvas>
     );
   }

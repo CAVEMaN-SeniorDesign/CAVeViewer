@@ -924,7 +924,7 @@ align-self: center;
 }
 
 .cavemanicon {
-  background-image: url("/public/images/CAVEMAN_Logo_Gray_Transparent.png");
+  background-image: url("/images/CAVEMAN_Logo_Gray_Transparent.png");
   width: 35px;
   height: 35px;
   background-size: contain;
