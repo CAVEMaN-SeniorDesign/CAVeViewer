@@ -97,7 +97,9 @@
             <a class="nav-link small" href="#ros">High Level Software & Robotics</a>
             <a class="nav-link small" href="#mapping">Mapping Pipeline</a>
             <a class="nav-link small" href="#testing">Testing</a>
-            <a class="nav-link small" href="#present">Presentations & Next Steps</a>
+            <a class="nav-link small" href="#expo">Design Expo Spring 2025</a>
+            <a class="nav-link small" href="#rework">CAVEMAN Rework - NEW FEATURES</a>
+            <a class="nav-link small" href="#RADD">Robotics & AI Discovery Day</a>
 		</nav>
 	</nav>
 	<div id="headerroot"></div>
@@ -814,15 +816,114 @@
                     </p>
                 </section>
 
-				<section class="mb-5" id="present">
-                    <h2 class="h3 mb-3">Presentations & Next Steps</h2>
+				<section class="mb-5" id="expo">
+                    <h2 class="h3 mb-3">Design Expo Spring 2025</h2>
                     <p class="mb-3">
-                        In mid-April, we presented our work at the Spring 2025 Pitt SSOE Design Expo, winning 3rd overall in the ECE Department. We were very happy to show off all the work and love that went into this project, especially since our advisor put a lot of faith in us to pull it all off. Luckily, this project isn't fully done yet, as we have more plans and presentations in store.
-                    </p>
-                    <p class="mb-3">
-                        We will be presenting at the 2025 Pittsburgh Robotics Discovery Day, along with adding in some better autonomy features, new versions of the hardware and software stack, and even some more VR-related content for fun. Stay tuned for our progress and thanks for reading!
+                        In mid-April, we presented our work at the Spring 2025 Pitt SSOE Design Expo, winning 3rd overall in the ECE Department. We were very happy to show off all the work and love that went into this project, especially since our advisor put a lot of faith in us to pull it all off. Luckily, this project isn't fully done yet, as we have more plans and presentations in store. We planned to rework the system for demoing at Pittsburgh Robotics Network Robotics and AI Discovery Day. 
                     </p>
                 </section>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/blog_dexpo_4o5.JPEG" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						Pitt Spring 2025 Design Expo Presentation (1 of 2)
+					</figcaption>
+				</figure>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/blog_dexpo_3o5.JPEG" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						Pitt Spring 2025 Design Expo Presentation (2 of 2)
+					</figcaption>
+				</figure>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/team.jpeg" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						Entire CAVEMAN Team After Expo
+					</figcaption>
+				</figure>
+
+				<section class="mb-5" id="rework">
+                    <h2 class="h3 mb-3">CAVEMAN Rework: New Hardware, Software, Virtual Reality Platforms</h2>
+                    <p class="mb-3">
+                        After spending the summer cooling off and making this website as documentation, we started progress towards a CAVEMAN rework. Having one large PCB tailored for CAVEMAN, while successful for the main project, is not sustainable for iteration. Small reworks require fully new PCB manufacturing, compounding costs exponentially. Through this rationale, we split up the main PCB into a computational board, power board, and servo-motor board. Splitting up the PCB this way allows individual debugging of separate boards to ensure certain subsystems are correct and can be fixed while minimizing redundant manufacturing. In addition to this change, we moved our high-level software stack from the Nvidia Jetson to a Raspberry Pi 4. This change was justified due to borrowing and returning the Jetson to the ECE Department, not needing autonomy for demos, and having the RPi 4 readily at hand. The final change was integrating a new depth camera into CAVEMAN and adding a VR teleoperation platform to manually control the system.
+                    </p>
+					<p class="mb-3">
+                        Splitting the CAVeBoard into 3 distinct PCBs had the additional purpose of reuse for new projects. By splitting up the main computational board into standalone hardware, it can be adapted to other vehicles, such as underwater robots or drones. This also allows the other boards to be mixed and matched to suit different needs. The power board is necessary for all systems but it can be adjusted to any battery form factor for weight tradeoffs. The servo-motor board has all the high-voltage and high-current peripherals that caused voltage spikes near the computational modules in the original board. By separating and decoupling these systems on different boards, we aimed to increase modularity and resilience while decreasing manufacturing costs. To keep these boards extensible for new projects, more uniform connectors were used to streamline interfacing. More pins were also exposed, lending itself to a devboard design.
+                    </p>
+					
+					<figure class="figure mb-5 text-center w-100">
+						<img src="/images/blog_rework_brain.jpg" class="figure-img img-fluid rounded" >
+						<figcaption class="figure-caption text-center text-white">
+							New Brain Board with breakouts for comms and extensive peripherals
+						</figcaption>
+					</figure>
+
+					<figure class="figure mb-5 text-center w-100">
+						<img src="/images/blog_rework_servomotor.jpg" class="figure-img img-fluid rounded" >
+						<figcaption class="figure-caption text-center text-white">
+							New Servo Motor Board with modularized breakouts
+						</figcaption>
+					</figure>
+
+					<figure class="figure mb-5 text-center w-100">
+						<img src="/images/blog_rework_pwret.png" class="figure-img img-fluid rounded" >
+						<figcaption class="figure-caption text-center text-white">
+							New Power Board Design with multiple buck converters for better power distribution.
+						</figcaption>
+					</figure>
+
+					<p class="mb-3">
+                        Improved software stacks for low and high level functionality were developed during this rework. The low-level software got improvements that made it more portable to other ST microcontrollers such that when the Brain PCB, the old CAVeBoard, or a new MCU was used, the same stack could be utilized. Porting over the high-level functionality was straightforward as we dropped the use of ROS2 in favor of SDL2. Since these new developments were purely for demo purposes, the autonomy stack was not important meanwhile responsive manual control was extremely necessary. SDL2 has event-based polling as opposed to ROS2's timing-based polling, making it more conducive to better performance. Since a new high-level computer was used, we got to test and improve on the extensibility of CAVeTalk. The performance on the Raspberry Pi 4 was similar to the Nvidia Jetson, including the presence of the transmission resets/blackout. This bug still plagued the system on this new platform, pointing to either issues in CAVeTalk's implementation, such as thread-safety, or in the hardware itself. 
+                    </p>
+
+					<p class="mb-3">
+                        The flashiest part of this rework was implementing VR teleoperation. On the RPI4, we set up a few websocket servers. The main one was for signaling to establish a WebRTC connection between the VR headset and the RPI4, allowing data to be streamed from CAVEMAN into the VR landscape. The other websockets were for sending VR control states, like headset quaternions and controller commands, to the RPI4 to operate CAVEMAN. The VR capabilities included built-in headtracking, mapping headset orientation to the rover's camera servos. Along with that, the VR controllers were used to drive and steer the rover. The VR-side of the system was created in Unity, using WebRTC and Websockets in C# to establish and maintain the connection, plastering the received frame on a camera-locked canvas. The RPI4 uses a mix of Python and C++ to send and receive signals and data accordingly. By the end of all this, we had successfully revived CAVEMAN and added a brand-new feature to its capabilities. New hardware, software, and teleoperation were ready for Robotics and AI Discovery Day.
+                    </p>
+                </section>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/blog_rework_vrteleopdiag.png" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						VR Teleoperation Networking Architecture Diagram
+					</figcaption>
+				</figure>
+
+				<figure class="figure mb-5 text-center w-100">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/oOCa-mZm0f8?si=aPU1_ZOYgFYFimUQ"
+                            class="rounded"
+                            title="VR Teleoperation Demo - CAVEMAN"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <figcaption class="figure-caption text-center mt-2 text-white">
+                        CAVEMAN VR Teleoperation Demonstration with Headtracking and Video Streaming
+                    </figcaption>
+                </figure>
+
+				<section class="mb-5" id="RADD">
+                    <h2 class="h3 mb-3">Pittsburgh Robotics Network Robotics & AI Discovery Day</h2>
+                    <p class="mb-3">
+                        After setting up our booth at RADD the day before, we spent the 9 hours of the convention showing off our project. We let robotics enthusiasts of all ages test out our VR system, particularly our head tracking, along with explore our original maps and website. We also were able to show off our posters and talk to people and investors about our process and further prospects. While this project was fundamentally out of passion, being able to have people test our system and give real feedback was extremely validating, along with talking about our development experience with people who had similar experiences. We had a great amount of fun at Pittsburgh Robotics Network's 2025 Robotics and AI Discovery Day, and we had so much fun with CAVEMAN. We look forward to the next chapter of CAVEMAN.
+                    </p>
+                </section>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/blog_radd_display.jpg" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						CAVEMAN's Robotics and AI Discovery Day Booth 
+					</figcaption>
+				</figure>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/blog_radd_displayus.jpg" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						CAVEMAN Team at Robotics and AI Discovery Day
+					</figcaption>
+				</figure>
 
                 <!-- Video with Caption -->
                 <!-- <figure class="figure mb-5 text-center w-100">
