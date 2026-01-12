@@ -853,19 +853,19 @@
                         Splitting the CAVeBoard into 3 distinct PCBs had the additional purpose of reuse for new projects. By splitting up the main computational board into standalone hardware, it can be adapted to other vehicles, such as underwater robots or drones. This also allows the other boards to be mixed and matched to suit different needs. The power board is necessary for all systems but it can be adjusted to any battery form factor for weight tradeoffs. The servo-motor board has all the high-voltage and high-current peripherals that caused voltage spikes near the computational modules in the original board. By separating and decoupling these systems on different boards, we aimed to increase modularity and resilience while decreasing manufacturing costs. To keep these boards extensible for new projects, more uniform connectors were used to streamline interfacing. More pins were also exposed, lending itself to a devboard design.
                     </p>
 					
-					<!-- <figure class="figure mb-5 text-center w-100">
-						<img src="/images/blog_rework_brain.png" class="figure-img img-fluid rounded" >
+					<figure class="figure mb-5 text-center w-100">
+						<img src="/images/blog_rework_brain.jpg" class="figure-img img-fluid rounded" >
 						<figcaption class="figure-caption text-center text-white">
 							New Brain Board with breakouts for comms and extensive peripherals
 						</figcaption>
 					</figure>
 
 					<figure class="figure mb-5 text-center w-100">
-						<img src="/images/blog_rework_servomotor.png" class="figure-img img-fluid rounded" >
+						<img src="/images/blog_rework_servomotor.jpg" class="figure-img img-fluid rounded" >
 						<figcaption class="figure-caption text-center text-white">
 							New Servo Motor Board with modularized breakouts
 						</figcaption>
-					</figure> -->
+					</figure>
 
 					<figure class="figure mb-5 text-center w-100">
 						<img src="/images/blog_rework_pwret.png" class="figure-img img-fluid rounded" >
@@ -882,6 +882,13 @@
                         The flashiest part of this rework was implementing VR teleoperation. On the RPI4, we set up a few websocket servers. The main one was for signaling to establish a WebRTC connection between the VR headset and the RPI4, allowing data to be streamed from CAVEMAN into the VR landscape. The other websockets were for sending VR control states, like headset quaternions and controller commands, to the RPI4 to operate CAVEMAN. The VR capabilities included built-in headtracking, mapping headset orientation to the rover's camera servos. Along with that, the VR controllers were used to drive and steer the rover. The VR-side of the system was created in Unity, using WebRTC and Websockets in C# to establish and maintain the connection, plastering the received frame on a camera-locked canvas. The RPI4 uses a mix of Python and C++ to send and receive signals and data accordingly. By the end of all this, we had successfully revived CAVEMAN and added a brand-new feature to its capabilities. New hardware, software, and teleoperation were ready for Robotics and AI Discovery Day.
                     </p>
                 </section>
+
+				<figure class="figure mb-5 text-center w-100">
+					<img src="/images/blog_rework_vrteleopdiag.png" class="figure-img img-fluid rounded" >
+					<figcaption class="figure-caption text-center text-white">
+						VR Teleoperation Networking Architecture Diagram
+					</figcaption>
+				</figure>
 
 				<figure class="figure mb-5 text-center w-100">
                     <div class="ratio ratio-16x9">
